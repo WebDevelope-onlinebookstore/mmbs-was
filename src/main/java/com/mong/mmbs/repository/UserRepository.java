@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mong.mmbs.entity.UserEntity;
 
+
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String>{
 
