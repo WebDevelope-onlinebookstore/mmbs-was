@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="grade")
+@Entity(name="grade")
 public class GradeEntity {
 	@Id
 	private int totalAmount;

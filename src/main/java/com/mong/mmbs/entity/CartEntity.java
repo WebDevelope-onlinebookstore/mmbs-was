@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="cart")
+@Entity(name="cart")
 public class CartEntity {
 	@Id
 	private int cartId;

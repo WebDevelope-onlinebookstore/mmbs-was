@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="playtoy")
+@Entity(name="playtoy")
 public class PlaytoyEntity {
 	@Id
 	private int playtoyId;

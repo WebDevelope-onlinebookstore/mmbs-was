@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="review")
+@Entity(name="review")
 public class ReviewEntity {
 	@Id
 	private int reviewId;

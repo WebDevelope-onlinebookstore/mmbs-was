@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="coupon")
+@Entity(name="coupon")
 public class CoponEntity {
 	@Id
 	private int couponId;

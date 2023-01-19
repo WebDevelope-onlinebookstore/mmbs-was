@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="book")
+@Entity(name="book")
 public class BookEntity {
 	@Id
 	 private int bookIsbn;

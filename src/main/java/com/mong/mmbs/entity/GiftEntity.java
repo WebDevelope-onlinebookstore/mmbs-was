@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="gift")
+@Entity(name="gift")
 public class GiftEntity {
 	@Id
 	private int giftId;

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="ask")
+@Entity(name="ask")
 public class AskEntity {
 	@Id
 	private int askId;

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-@Entity
+@Table(name="user")
+@Entity(name="user")
 public class UserEntity {
 	@Id
 	 private String userId;
@@ -24,7 +24,7 @@ public class UserEntity {
 	  private String userAddressDtl;
 	  private String userGrade;
 	  private int userTotalAmount;
-	  private int userRecommend;
+	  private String userRecommend;
 	  private String userKidBirth;
 	  private String userSignupDate;
 	  private String userWithdraw;
