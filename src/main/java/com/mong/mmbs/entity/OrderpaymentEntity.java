@@ -26,7 +26,7 @@ public class OrderpaymentEntity {
 	private int orderProductAmount;
 	private int orderTotalPrice;
 	private String orderDate;
-	private String orderRecipient;
+	private String orderRecieptient;
 	private String orderRecieptPhone;
 	private String orderShipAddress;
 	private int orderShipPrice;

@@ -26,7 +26,7 @@ public class UserEntity {
 	  private int userTotalAmount;
 	  private String userRecommend;
 	  private String userKidBirth;
-	  private String userSignupDate;
+	  private String userSignUpDate;
 	  private String userWithdraw;
-	  private String struserCoupon;
+	  private String userCoupon;
 }

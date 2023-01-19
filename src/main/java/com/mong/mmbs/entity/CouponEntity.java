@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="coupon")
 @Entity(name="coupon")
-public class CoponEntity {
+public class CouponEntity {
 	@Id
 	private int couponId;
     private String couponSort;

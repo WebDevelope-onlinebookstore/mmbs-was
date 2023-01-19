@@ -16,11 +16,11 @@ import lombok.NoArgsConstructor;
 public class AskEntity {
 	@Id
 	private int askId;
-	private String askwriter;
+	private String askWriter;
 	private String askTitle;
 	private String askSort;
 	private String askContent;
-	private String straskData;
+	private String askData;
 	private String askStatus;
 	private String askDelete;
 }

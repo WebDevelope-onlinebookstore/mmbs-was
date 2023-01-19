@@ -17,7 +17,7 @@ public class PlaytoyEntity {
 	@Id
 	private int playtoyId;
 	private String playtoyTitle;
-	private String strplaytoyAge;
+	private String playtoyAge;
 	private String playtoyGenre;
 	private String playtoyPublicationDate;
 	private int playtoyPrice;
