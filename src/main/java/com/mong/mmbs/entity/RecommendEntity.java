@@ -15,18 +15,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "grade")
-@Entity(name = "grade")
-public class GradeEntity {
-//	등급 아이디 [0, 1, 2, 3, 4]
+@Table(name = "recommend")
+@Entity(name = "recommend")
+public class RecommendEntity {
+//  추천인 테이블 시퀀스
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int gradeId;
-//	등급 이름 [씨앗, 새싹, 풀잎, 나무, 열매]
-	private String gradeName;
-//  할인율 [0, 3, 5, 7, 10]
-	private int gradeDiscount;
-//	준 누적 금액 [0, 10, 30, 50, 70]
-	private int gradeTotalPrice;
-
+	private int recommendSeq;
+//  추천인 (추천 당한 사람)
+    private String recommendedUserId;
+//  추천 (추천한 사람)
+    private String recommendingUserId;
 }

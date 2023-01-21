@@ -7,23 +7,32 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="review")
-@Entity(name="review")
+@Table(name = "review")
+@Entity(name = "review")
 public class ReviewEntity {
+//	리뷰 시퀀스
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int reviewId;
-	private String reviewWriter;
-	private int orderNumber;
-	private String reviewTitle;
+    private int reviewId;
+//  리뷰 작성자 아이디
+	private String reviewWriterId;
+//  제품 목록
+	private int reviewProductId;
+//  별점
+    private int reviewScore;
+//  리뷰 내용
 	private String reviewContent;
-	private String reviewDate;
-	private String reviewStatus;
-	private String reviewDelete;
+//  리뷰 이미지
+    private String reviewImage;
+//  리뷰 날짜
+	private String reviewDatetime;
+
 }

@@ -14,19 +14,30 @@ import lombok.NoArgsConstructor;
 @Table(name="user")
 @Entity(name="user")
 public class UserEntity {
+//	아이디
 	@Id
-	 private String userId;
-	  private String userPassword;
-	  private String userName;
-	  private String userPhone;
-	  private String userEmail;
-	  private String userAddressApi;
-	  private String userAddressDtl;
-	  private String userGrade;
-	  private int userTotalAmount;
-	  private String userRecommend;
-	  private String userKidBirth;
-	  private String userSignUpDate;
-	  private String userWithdraw;
-	  private String userCoupon;
+	private String userId;
+//	비밀번호
+	private String userPassword;
+//	이메일
+	private String userEmail;
+//	주소
+	private String userAddress;
+//	상세 주소
+	private String userAddressDetail;
+//	이름
+	private String userName;
+//	전화번호
+	private String userPhone;
+//	등급
+	private String userGrade;
+//	누적 금액
+	private int userTotalAmount;
+//	아이 생일
+	private String userKidBirth;
+//	가입 날짜
+	private String userSignUpDate;
+//	탈퇴 날짜
+	private String userWithdraw;
+	  
 }

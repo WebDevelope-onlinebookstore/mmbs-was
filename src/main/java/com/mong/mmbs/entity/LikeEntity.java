@@ -7,26 +7,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "grade")
-@Entity(name = "grade")
-public class GradeEntity {
-//	등급 아이디 [0, 1, 2, 3, 4]
+@Table(name="like")
+@Entity(name="like")
+public class LikeEntity {
+//	좋아요 시퀀스
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int gradeId;
-//	등급 이름 [씨앗, 새싹, 풀잎, 나무, 열매]
-	private String gradeName;
-//  할인율 [0, 3, 5, 7, 10]
-	private int gradeDiscount;
-//	준 누적 금액 [0, 10, 30, 50, 70]
-	private int gradeTotalPrice;
-
+	private int likeSeq;
+//	좋아요한 제품 아이디
+	private int likeProductId;
+//	좋아요한 유저의 아이디
+	private String likeUserId;
 }

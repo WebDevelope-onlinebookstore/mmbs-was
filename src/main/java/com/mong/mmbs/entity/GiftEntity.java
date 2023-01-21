@@ -1,23 +1,26 @@
 package com.mong.mmbs.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="gift")
-@Entity(name="gift")
+@Table(name = "gift")
+@Entity(name = "gift")
 public class GiftEntity {
+//	사은품 코드
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int giftId;
-	private String giftSort;
+	private String giftCode;
+//  사은품 이름
+    private String giftName;
+//  사은품 이미지
+    private String giftImage;
 }
