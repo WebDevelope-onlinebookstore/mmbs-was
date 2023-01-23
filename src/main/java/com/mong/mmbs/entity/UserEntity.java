@@ -1,8 +1,14 @@
 package com.mong.mmbs.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.core.format.DataFormatDetector;
+import com.mong.mmbs.dto.SignUpDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,5 +45,19 @@ public class UserEntity {
 	private String userSignUpDate;
 //	탈퇴 날짜
 	private String userWithdraw;
-	  
+	
+	public UserEntity(SignUpDto dto) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		this.userId = dto.getUserId();
+		this.userPassword = dto.getUserPassword();
+		this.userEmail = dto.getUserEmail();
+		this.userAddress = dto.getUserAddress();
+		this.userAddressDetail =dto.getUserAddressDetail();
+		this.userName = dto.getUserName();
+		this.userPhone = dto.getUserPhone();
+		this.userKidBirth = dto.getUserKidBirth();
+		this.userSignUpDate = dateFormat.format(new Date());
+	}
+	
 }
