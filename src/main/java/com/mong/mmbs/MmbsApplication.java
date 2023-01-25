@@ -14,7 +14,6 @@ public class MmbsApplication {
 	}
 	
 	// 코스정책 작성
-	
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
