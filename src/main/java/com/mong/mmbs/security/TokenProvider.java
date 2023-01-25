@@ -37,4 +37,5 @@ public class TokenProvider {
 		// 복호화된 토크느이 payload에서 제목을 가져옴.
 		return claims.getSubject();
 	}
+	// 인증만을 위한 토큰
 }
