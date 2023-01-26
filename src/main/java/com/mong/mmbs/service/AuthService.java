@@ -1,13 +1,14 @@
 package com.mong.mmbs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
 import com.mong.mmbs.dto.SignUpDto;
-import com.mong.mmbs.dto.UserUpdateDto;
 import com.mong.mmbs.entity.RecommendEntity;
 import com.mong.mmbs.entity.UserEntity;
 import com.mong.mmbs.repository.RecommendRepository;
@@ -23,6 +24,8 @@ public class AuthService {
     RecommendRepository recommendRepository;
     @Autowired
     TokenProvider tokenProvider;
+    
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public ResponseDto<?> signUp(SignUpDto dto) {
 
@@ -63,6 +66,10 @@ public class AuthService {
 
             // todo: 추천 당한 사람에게 쿠폰 지급 //
         }
+        
+        // 비밀번호 암호화
+        String encodedPassword = passwordEncoder.encode(userPassword);
+//        UserEntity.setUserPassword(passwordEncoder.encode(userPassword));
 
         // description: Entity 생성 //
         UserEntity userEntity = new UserEntity(dto);
@@ -103,17 +110,4 @@ public class AuthService {
     	SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, userEntity);
     	return ResponseDto.setSuccess("Sign In Success", signInResponseDto);
     }
-    
-    public ResponseDto<UserUpdateResponseDto> userUpdate(UserUpdateDto dto) {
-    	return null;
-//    회원 정보 수정 (userId, userEmail는 변경 불가)
-//    로그인 된 회원만 접근 가능
-//    로그인 된 'userId'로 회원 정보 불러오기
-//    비밀번호는 가져오지 않는다.
-//    비밀번호 양식이 맞는지 검증
-//    비밀번호 변경 시 확인란과 서로 같은지 검증
-//    수정된 회원 정보 저장 및 출력
-    	
-    }
-
 }

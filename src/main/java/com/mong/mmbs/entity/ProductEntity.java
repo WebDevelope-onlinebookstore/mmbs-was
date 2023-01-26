@@ -19,7 +19,7 @@ public class ProductEntity {
 //	고유번호
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int product_seq;
+	private int productSeq;
 //	장르 [국내도서, 외국도서, 전집, 토이/교구, 부모님의 서재]
 	private String productGenre;
 //	고유번호
