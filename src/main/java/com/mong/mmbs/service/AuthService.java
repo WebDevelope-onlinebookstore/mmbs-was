@@ -5,6 +5,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+import com.mong.mmbs.dto.FindIdDto;
+import com.mong.mmbs.dto.FindPasswordDto;
+import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
@@ -24,8 +28,28 @@ public class AuthService {
     RecommendRepository recommendRepository;
     @Autowired
     TokenProvider tokenProvider;
-    
+
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    
+    //입력한 유저이름과 이메일이 둘다 맞는지만 판단하는 메서드
+    public ResponseDto<?> findId(FindIdDto dto) {
+    	String userName = dto.getUserName();
+    	String userEmail = dto.getUserEmail();
+    	
+    	UserEntity userEntity = userRepository.findByUserEmailAndUserName(userEmail, userName);
+    	if (userEntity == null) return ResponseDto.setFailed("일치하는 정보가 없음"); 
+    	return ResponseDto.setSuccess("성공", userEntity.getUserId());
+    }
+    
+    public ResponseDto<?> findPassword(FindPasswordDto dto){
+    	String userId = dto.getUserId();
+    	String userName = dto.getUserName();
+    	String userEmail = dto.getUserEmail();
+    	
+    	UserEntity userEntity = userRepository.findByUserIdAndUserNameAndUserEmail(userId, userName, userEmail);
+    	if(userEntity == null) return ResponseDto.setFailed("일치하는 정보가 없음");
+    	return ResponseDto.setSuccess("성공", userEntity.getUserPassword());
+    }
 
     public ResponseDto<?> signUp(SignUpDto dto) {
 
@@ -118,4 +142,9 @@ public class AuthService {
     	SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, userEntity);
     	return ResponseDto.setSuccess("Sign In Success", signInResponseDto);
     }
+    public ResponseDto<?> putInCart (PutInCartDto dto){
+    	
+    	return null;
+    }
+
 }

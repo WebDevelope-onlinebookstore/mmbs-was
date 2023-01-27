@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mong.mmbs.dto.FindIdDto;
+import com.mong.mmbs.dto.FindPasswordDto;
+import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
@@ -28,12 +31,35 @@ public class AuthController {
 		ResponseDto<?> result = authService.signUp(requestBody);
 		return result;
 	}
+	@PostMapping("/findId")
+	public ResponseDto<?> findId(@RequestBody FindIdDto requestBody){
+		ResponseDto<?> result = authService.findId(requestBody);
+		return result;
+	}
+	@PostMapping("/findPassword")
+	public ResponseDto<?> findPassword(@RequestBody FindPasswordDto requestBody){
+		ResponseDto<?> result = authService.findPassword(requestBody);
+		return result;
+	}
 	
 	@PostMapping("/signIn")
 	public ResponseDto<SignInResponseDto> signIn(@RequestBody SignInDto requestBody) {
 		ResponseDto<SignInResponseDto> result = authService.signIn(requestBody);
 		return result;
 	}
+	
+	@PostMapping("/cart")
+	public ResponseDto<?> putInCart(@RequestBody PutInCartDto requestBody){
+		ResponseDto<?> result = authService.putInCart(requestBody);
+		return result;
+	}
+	
+//	@PostMapping("/userUpdate")
+//	public ResponseDto<UserUpdateReponseDto> userUpdate(@RequestBody UserUpdateDto requestBody) {
+//		ResponseDto<UserUpdateReponseDto> result = authService.userUpdate(requestBody);
+//		return result;
+//	}
+	
 	
 	@GetMapping("/userUpdate/{userId}")
 	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {

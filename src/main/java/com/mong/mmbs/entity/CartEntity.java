@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.mong.mmbs.dto.CartDto;
+import com.mong.mmbs.dto.SignUpDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,4 +37,6 @@ public class CartEntity {
 	private int cartProductPrice;
 //  제품 개 수
 	private int cartProductAmount;
+	
+	
 }
