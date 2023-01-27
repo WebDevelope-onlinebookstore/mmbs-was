@@ -41,6 +41,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			//// 인증과 관련된 인증 정보를 request header에 포함해서 가져온다. //// 밑에 header에 담아오는 
 			//// 토큰이 오거나 null이 오게 된다. 
 			
+			System.out.println(token);
+			
 			if (token != null && !token.equalsIgnoreCase("null")) {
 				// 토큰 검증해서 payload의 userId를 가져옴
 				//// 문자열로 null 이 아니면서 실제 null값이 아니면
@@ -81,6 +83,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	// Request Header에서 Authorization 필드의 Bearer Token을 가져오는 메서드
 	private String parseBearerToken(HttpServletRequest request) {
 		String bearerToken = request.getHeader("Authorization");
+		System.out.println(bearerToken);
 		//// request안에 있는 header에서 authorization라는 필드명으로 파트를 가져올 것이다. 
 		//// Bearer eyJhbGciOiJIUzUxMiJ9.
 		////        여기 부터 가져오는 메서드는 if문

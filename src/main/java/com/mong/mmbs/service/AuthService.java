@@ -53,7 +53,8 @@ public class AuthService {
 
         // description: 추천인 //
         String recommendedUserId = dto.getRecommendedUserId();
-        if (recommendedUserId != null && recommendedUserId.isEmpty()) {
+        System.out.println("recommendedUserId : " + recommendedUserId);
+        if (recommendedUserId != null && !recommendedUserId.isEmpty()) {
             // description: 추천인 존재 여부 검증 //
             if (!userRepository.existsById(recommendedUserId))
                 return ResponseDto.setFailed("Recommended User Does Not Exist");
@@ -62,13 +63,16 @@ public class AuthService {
             RecommendEntity recommendEntity = RecommendEntity.builder().recommendedUserId(recommendedUserId)
                     .recommendingUserId(userId).build();
             // description: Repository에 Entity 저장 //
+            System.out.println(recommendEntity.toString());
             recommendRepository.save(recommendEntity);
 
             // todo: 추천 당한 사람에게 쿠폰 지급 //
+            
         }
         
         // 비밀번호 암호화
         String encodedPassword = passwordEncoder.encode(userPassword);
+        dto.setUserPassword(encodedPassword);
 //        UserEntity.setUserPassword(passwordEncoder.encode(userPassword));
 
         // description: Entity 생성 //
@@ -88,16 +92,20 @@ public class AuthService {
     	// 데이터가 있는지 검증 //
     	String userId = dto.getUserId();
     	String userPassword = dto.getUserPassword();
-    	try {
-    		boolean existed = userRepository.existsByUserIdAndUserPassword(userId, userPassword);
-    		if(!existed) return ResponseDto.setFailed("Sign In Information Does Not Match");    		
-    	} catch (Exception error) {
-    		return ResponseDto.setFailed("DataBase Error");
-    	}
+    	
+    	// 암호화 적용으로 더 이상 불필요 2023.01.27. 이승아
+//    	try {
+//    		boolean existed = userRepository.existsByUserIdAndUserPassword(userId, userPassword);
+//    		if(!existed) return ResponseDto.setFailed("Sign In Information Does Not Match");    		
+//    	} catch (Exception error) {
+//    		return ResponseDto.setFailed("DataBase Error");
+//    	}
     	
     	UserEntity userEntity = null;
     	try {
-    		userEntity = userRepository.findById(userId).get();    		
+    		userEntity = userRepository.findByUserId(userId);    
+    		boolean matched = passwordEncoder.matches(userPassword, userEntity.getUserPassword());
+    		if (!matched) return ResponseDto.setFailed("Password Not Matched");
     	} catch (Exception error) {
     		return ResponseDto.setFailed("DataBase Error");
     	}

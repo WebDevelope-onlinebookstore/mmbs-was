@@ -9,13 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SignUpDto {
+public class UserUpdateDto {
 	@NotBlank
 	private String userId;
-	@NotBlank
-	private String userPassword;
-	@NotBlank
-	private String userPasswordCheck;
 	@NotBlank
 	private String userName;
 	@NotBlank
@@ -27,5 +23,4 @@ public class SignUpDto {
 	@NotBlank
 	private String userAddressDetail;
 	private String userKidBirth;
-	private String recommendedUserId;
 }
