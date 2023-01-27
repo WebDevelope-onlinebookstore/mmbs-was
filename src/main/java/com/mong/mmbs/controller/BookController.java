@@ -1,0 +1,23 @@
+package com.mong.mmbs.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.service.BookListService;
+
+@Controller
+@RequestMapping("/api/book")
+
+public class BookController<BookListServicevice> {
+	
+	@Autowired BookListService bookListService;
+
+	@GetMapping("/bookList")
+	public ResponseDto<?> getBookList() {
+		return bookListService.getBookList();
+	}
+}
