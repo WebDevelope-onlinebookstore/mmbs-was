@@ -103,6 +103,7 @@ public class AuthService {
         UserEntity userEntity = new UserEntity(dto);
         // description: Repository에 Entity 저장 //
         try {
+        	System.out.println(userEntity.toString());
         	userRepository.save(userEntity);        	
         } catch (Exception error) {
         	return ResponseDto.setFailed("DataBase Error");
