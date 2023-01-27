@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.core.format.DataFormatDetector;
 import com.mong.mmbs.dto.SignUpDto;
+import com.mong.mmbs.dto.UserUpdateDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -58,6 +59,15 @@ public class UserEntity {
 		this.userPhone = dto.getUserPhone();
 		this.userKidBirth = dto.getUserKidBirth();
 		this.userSignUpDate = dateFormat.format(new Date());
+	}
+	
+	public void setUpdateUser(UserUpdateDto dto) {
+		
+		this.userAddress = dto.getUserAddress();
+		this.userAddressDetail =dto.getUserAddressDetail();
+		this.userName = dto.getUserName();
+		this.userPhone = dto.getUserPhone();
+		this.userKidBirth = dto.getUserKidBirth();
 	}
 	
 }

@@ -12,15 +12,16 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
 import com.mong.mmbs.dto.SignUpDto;
+import com.mong.mmbs.dto.UserUpdateDto;
 import com.mong.mmbs.service.AuthService;
-import com.mong.mmbs.service.UserUpdateService;
+import com.mong.mmbs.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 	
 	@Autowired AuthService authService;
-	@Autowired UserUpdateService userUpdateService;
+	@Autowired UserService userUpdateService;
 	
 	@PostMapping("/signUp")
 	public ResponseDto<?> signUp(@RequestBody SignUpDto requestBody) {
@@ -36,6 +37,13 @@ public class AuthController {
 	
 	@GetMapping("/userUpdate/{userId}")
 	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {
-		return userUpdateService.userUpdate(userId);
+//		return userUpdateService.userUpdate(userId);
+		return null;
 	}
+	
+//	@PostMapping("/userUpdate/{userId}")
+//	public ResponseDto<?> userUpdatea(@RequestBody UserUpdateDto requestBody) {
+////		ResponseDto<?> result = authService.
+//		return null;
+//	}
 }
