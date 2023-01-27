@@ -12,10 +12,6 @@ import lombok.NoArgsConstructor;
 public class UserUpdateDto {
 	@NotBlank
 	private String userId;
-
-	private String userPassword;
-
-	private String userPasswordCheck;
 	@NotBlank
 	private String userName;
 	@NotBlank

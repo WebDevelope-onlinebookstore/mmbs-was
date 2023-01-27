@@ -1,12 +1,13 @@
 package com.mong.mmbs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mong.mmbs.dto.CartDto;
 import com.mong.mmbs.dto.FindIdDto;
 import com.mong.mmbs.dto.FindPasswordDto;
 import com.mong.mmbs.dto.PutInCartDto;
@@ -16,12 +17,14 @@ import com.mong.mmbs.dto.SignInResponseDto;
 import com.mong.mmbs.dto.SignUpDto;
 import com.mong.mmbs.dto.UserUpdateDto;
 import com.mong.mmbs.service.AuthService;
+import com.mong.mmbs.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 	
 	@Autowired AuthService authService;
+	@Autowired UserService userUpdateService;
 	
 	@PostMapping("/signUp")
 	public ResponseDto<?> signUp(@RequestBody SignUpDto requestBody) {
@@ -58,4 +61,15 @@ public class AuthController {
 //	}
 	
 	
+	@GetMapping("/userUpdate/{userId}")
+	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {
+//		return userUpdateService.userUpdate(userId);
+		return null;
+	}
+	
+//	@PostMapping("/userUpdate/{userId}")
+//	public ResponseDto<?> userUpdatea(@RequestBody UserUpdateDto requestBody) {
+////		ResponseDto<?> result = authService.
+//		return null;
+//	}
 }
