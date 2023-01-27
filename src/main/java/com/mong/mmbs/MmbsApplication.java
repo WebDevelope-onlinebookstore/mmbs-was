@@ -6,14 +6,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import lombok.Data;
+
 @SpringBootApplication
 public class MmbsApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MmbsApplication.class, args);
 	}
 	
 	// 코스정책 작성
+	
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
