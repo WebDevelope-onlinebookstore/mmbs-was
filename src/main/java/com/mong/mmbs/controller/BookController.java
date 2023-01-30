@@ -5,11 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.service.BookListService;
 
-@Controller
+@RestController
 @RequestMapping("/api/book")
 
 public class BookController<BookListServicevice> {
