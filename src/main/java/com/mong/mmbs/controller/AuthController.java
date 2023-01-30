@@ -60,6 +60,7 @@ public class AuthController {
 		ResponseDto<?> result = authService.deleteFromCart(requestBody);
 		return result;
 	}
+  
 //	@PostMapping("/userUpdate")
 //	public ResponseDto<UserUpdateReponseDto> userUpdate(@RequestBody UserUpdateDto requestBody) {
 //		ResponseDto<UserUpdateReponseDto> result = authService.userUpdate(requestBody);
@@ -67,11 +68,11 @@ public class AuthController {
 //	}
 	
 	
-	@GetMapping("/userUpdate/{userId}")
-	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {
-//		return userUpdateService.userUpdate(userId);
-		return null;
-	}
+//	@GetMapping("/userUpdate/{userId}")
+//	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {
+////		return userUpdateService.userUpdate(userId);
+//		return null;
+//	}
 	
 //	@PostMapping("/userUpdate/{userId}")
 //	public ResponseDto<?> userUpdatea(@RequestBody UserUpdateDto requestBody) {
