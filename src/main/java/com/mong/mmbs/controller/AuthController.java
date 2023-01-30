@@ -49,18 +49,6 @@ public class AuthController {
 		return result;
 	}
 	
-	@PostMapping("/cartInsert")//담는거
-	public ResponseDto<?> putInCart(@RequestBody PutInCartDto requestBody){
-		System.out.println(requestBody.toString());
-		ResponseDto<?> result = authService.putInCart(requestBody);
-		return result;
-	}
-	@PostMapping("/cartDelete")//지우는거
-	public ResponseDto<?> deleteFromCart(@RequestBody DeleteFromCartDto requestBody){
-		ResponseDto<?> result = authService.deleteFromCart(requestBody);
-		return result;
-	}
-  
 //	@PostMapping("/userUpdate")
 //	public ResponseDto<UserUpdateReponseDto> userUpdate(@RequestBody UserUpdateDto requestBody) {
 //		ResponseDto<UserUpdateReponseDto> result = authService.userUpdate(requestBody);
@@ -70,7 +58,7 @@ public class AuthController {
 	
 //	@GetMapping("/userUpdate/{userId}")
 //	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {
-////		return userUpdateService.userUpdate(userId);
+//		return userUpdateService.userUpdate(userId);
 //		return null;
 //	}
 	
