@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.mong.mmbs.dto.CartDto;
+import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.SignUpDto;
 
 import lombok.AllArgsConstructor;
@@ -38,5 +38,17 @@ public class CartEntity {
 //  제품 개 수
 	private int cartProductAmount;
 	
+	public CartEntity(PutInCartDto dto) {
+		this.cartUserId = dto.getCartUserId();
+		this.cartProductId = dto.getCartProductId();
+		this.cartProductName = dto.getCartProductName();
+		this.cartProductImage = dto.getCartProductImage();
+		this.cartProductPrice = dto.getCartProductPrice();
+		this.cartProductAmount = dto.getCartProductAmount();
+	}
+//	public CartEntity (PutInCartDto dto) {
+//		this.cartProductAmount += dto.getCartProductAmount();
+//		
+//	}
 	
 }

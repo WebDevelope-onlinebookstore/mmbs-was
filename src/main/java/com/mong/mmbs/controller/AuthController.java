@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mong.mmbs.dto.DeleteFromCartDto;
 import com.mong.mmbs.dto.FindIdDto;
 import com.mong.mmbs.dto.FindPasswordDto;
 import com.mong.mmbs.dto.PutInCartDto;
@@ -48,12 +49,17 @@ public class AuthController {
 		return result;
 	}
 	
-	@PostMapping("/cart")
+	@PostMapping("/cartInsert")//담는거
 	public ResponseDto<?> putInCart(@RequestBody PutInCartDto requestBody){
+		System.out.println(requestBody.toString());
 		ResponseDto<?> result = authService.putInCart(requestBody);
 		return result;
 	}
-	
+	@PostMapping("/cartDelete")//지우는거
+	public ResponseDto<?> deleteFromCart(@RequestBody DeleteFromCartDto requestBody){
+		ResponseDto<?> result = authService.deleteFromCart(requestBody);
+		return result;
+	}
 //	@PostMapping("/userUpdate")
 //	public ResponseDto<UserUpdateReponseDto> userUpdate(@RequestBody UserUpdateDto requestBody) {
 //		ResponseDto<UserUpdateReponseDto> result = authService.userUpdate(requestBody);
