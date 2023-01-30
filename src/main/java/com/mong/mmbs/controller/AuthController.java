@@ -49,7 +49,6 @@ public class AuthController {
 		return result;
 	}
 	
-
 //	@PostMapping("/userUpdate")
 //	public ResponseDto<UserUpdateReponseDto> userUpdate(@RequestBody UserUpdateDto requestBody) {
 //		ResponseDto<UserUpdateReponseDto> result = authService.userUpdate(requestBody);
