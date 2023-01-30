@@ -32,8 +32,7 @@ public class AuthService {
     RecommendRepository recommendRepository;
     @Autowired
     TokenProvider tokenProvider;
-    @Autowired
-    CartRepository cartRepository;
+  
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     
@@ -148,34 +147,6 @@ public class AuthService {
     	SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, userEntity);
     	return ResponseDto.setSuccess("Sign In Success", signInResponseDto);
     }
-    public ResponseDto<?> putInCart (PutInCartDto dto){
-    	
-    	String cartUserId = dto.getCartUserId();
-    	int cartProductId = dto.getCartProductId();
-    	String cartProductName = dto.getCartProductName();
-    	String cartProductImage = dto.getCartProductImage();
-    	int cartProductPrice = dto.getCartProductPrice();
-    	int cartProductAmount = dto.getCartProductAmount();
-//    	//중복을 찾아서 
-//    	if (cartEntity == null) {
-//    	}
-//    	CartEntity cartEntity = cartRepository.findByCartUserId(cartUserId);
-    	System.out.println(dto.toString());
-    	CartEntity cartEntity =null;
-    	cartEntity = new CartEntity(dto);
-    	cartRepository.save(cartEntity);
-    	return ResponseDto.setSuccess("장바구니에 담겼습니다.", null);
-    	
-
-    	}
-    public ResponseDto<?> deleteFromCart(DeleteFromCartDto dto){
-    	
-    	String cartUserId = dto.getCartUserId();
-    	int cartProductId = dto.getCartProductId();
-    	List<CartEntity> cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
-    	if(cartEntity != null) 
-    	cartRepository.deleteAll(cartEntity);
-    	return ResponseDto.setSuccess("장바구니에서 삭제되었습니다 .", null);
-    }
+    
     
     }
