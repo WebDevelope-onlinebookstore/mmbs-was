@@ -143,9 +143,4 @@ public class AuthService {
     	SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, userEntity);
     	return ResponseDto.setSuccess("Sign In Success", signInResponseDto);
     }
-    public ResponseDto<?> putInCart (PutInCartDto dto){
-    	
-    	return null;
-    }
-
 }
