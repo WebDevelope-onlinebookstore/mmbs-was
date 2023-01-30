@@ -1,12 +1,10 @@
 package com.mong.mmbs.filter;
 
 import java.io.IOException;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,14 +15,11 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import com.mong.mmbs.security.TokenProvider;
-
 @Component //// ( )을 외부에서 주입
-public class JwtAuthenticationFilter extends OncePerRequestFilter { 
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	//// request에 대한 필터를 적용시키겠다. >> 필터 생성
 	
-
 	// Request가 들어왔을 때 Request Header의 Authorization 필드의 Bearer Token을 가져옴
 	// 가져온 토큰을 검증하고 검증 결과를 SecurityContext에 추가
 	
@@ -33,15 +28,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 		////상속받으면 doFilterInternal을 필터로 무엇을 작동시킬것인가 >> 필터에서 실제로 돌아갈 녀석
-		//// request에 대한 필터 이기 때문에 Http~를 받고, response 시켜줄거기 때문에 httpRespnse~ 받고, 필터간의 관계에 대한 객체를 받아온다. 
+		//// request에 대한 필터 이기 때문에 Http~를 받고, response 시켜줄거기 때문에 httpRespnse~ 받고, 필터간의 관계에 대한 객체를 받아온다.
 			throws ServletException, IOException {
 		
 		try {
 			String token = parseBearerToken(request);
-			//// 인증과 관련된 인증 정보를 request header에 포함해서 가져온다. //// 밑에 header에 담아오는 
-			//// 토큰이 오거나 null이 오게 된다. 
-			
-			System.out.println(token);
+			//// 인증과 관련된 인증 정보를 request header에 포함해서 가져온다. //// 밑에 header에 담아오는
+			//// 토큰이 오거나 null이 오게 된다.
 			
 			if (token != null && !token.equalsIgnoreCase("null")) {
 				// 토큰 검증해서 payload의 userId를 가져옴
@@ -55,7 +48,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 				AbstractAuthenticationToken authentication =
 						//// 이렇게 포장해서 >>
 						new UsernamePasswordAuthenticationToken(userId, null, AuthorityUtils.NO_AUTHORITIES);
-						//// 객체를 담기 위한 생성 (principal에 userId, credentilas에 null, authorities 지정X) 
+						//// 객체를 담기 위한 생성 (principal에 userId, credentilas에 null, authorities 지정X)
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				//// 받을 때 request에 담아서 가져온다.
 				//// !userId를 가져온다!
@@ -83,8 +76,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	// Request Header에서 Authorization 필드의 Bearer Token을 가져오는 메서드
 	private String parseBearerToken(HttpServletRequest request) {
 		String bearerToken = request.getHeader("Authorization");
-		System.out.println(bearerToken);
-		//// request안에 있는 header에서 authorization라는 필드명으로 파트를 가져올 것이다. 
+		//// request안에 있는 header에서 authorization라는 필드명으로 파트를 가져올 것이다.
 		//// Bearer eyJhbGciOiJIUzUxMiJ9.
 		////        여기 부터 가져오는 메서드는 if문
 		if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer "))
@@ -95,5 +87,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		//// 아무것도 없으면 null 반환
 	}
 }
-
 //// 담아놓은 것을 쓰기 위해서 WebSecurityConfig
