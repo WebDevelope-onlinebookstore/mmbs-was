@@ -22,6 +22,8 @@ public class ProductEntity {
 	private int productSeq;
 //	장르 [국내도서, 외국도서, 전집, 토이/교구, 부모님의 서재]
 	private String productGenre;
+//	세부 장르
+	private String productSubGenre;
 //	고유번호
 	private int productIsbn;
 //	제목
@@ -32,6 +34,8 @@ public class ProductEntity {
 	private String productPublisher;
 //	연령 [0~3세, 4~7세, 부모]
 	private String productAge;
+//	연령 세부 장르
+	private String productSubAge;
 //	출판일
 	private String productPublicationDate;
 //	가격
