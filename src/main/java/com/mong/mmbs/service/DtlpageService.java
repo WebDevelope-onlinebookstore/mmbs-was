@@ -19,5 +19,9 @@ public class DtlpageService {
 		
 		return ResponseDto.setSuccess("성공", product);
 	}
+//	
+//	public ResponseDto<?>dtllikePage() {
+//		
+//	}
 	
 }
