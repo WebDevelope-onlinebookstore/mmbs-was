@@ -5,12 +5,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name="order")
 @Entity(name="order")
 public class OrderEntity {
@@ -24,7 +26,7 @@ public class OrderEntity {
 //	회원 아이디
 	private String orderUserId;
 //	사은품
-	private String giftCode;
+	private int giftCode;
 //	주문자 이름
 	private String orderUserName;
 //	주문자 전화번호

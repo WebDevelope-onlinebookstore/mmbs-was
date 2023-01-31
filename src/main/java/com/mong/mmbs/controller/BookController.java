@@ -1,4 +1,4 @@
-package com.mong.mmbs.controller;
+spackage com.mong.mmbs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
