@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="order")
-@Entity(name="order")
+@Table(name="orders")
+@Entity(name="orders")
 public class OrderEntity {
 //	주문번호 uuid
 	@Id
-	private String orderNumber;
+	private int orderNumber;
 //	회원여부
 	private boolean orderUserWhether;
 //	비회원 비밀번호
