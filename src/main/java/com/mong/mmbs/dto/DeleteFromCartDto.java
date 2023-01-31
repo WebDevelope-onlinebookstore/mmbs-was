@@ -9,14 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PutInCartDto {
+public class DeleteFromCartDto {
 	@NotBlank
 	private String cartUserId;
-	private Integer cartProductId;
 	@NotBlank
-	private String cartProductName;
-	@NotBlank
-	private String cartProductImage;
-	private Integer cartProductPrice;
-	private Integer cartProductAmount;
+	private int cartProductId;
 }
