@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class GiftEntity {
 //	사은품 코드
 	@Id
-	private String giftCode;
+	private int giftCode;
 //  사은품 이름
     private String giftName;
 //  사은품 이미지

@@ -1,6 +1,5 @@
 package com.mong.mmbs.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,24 +8,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mong.mmbs.dto.DtlLikepageDto;
+import com.mong.mmbs.dto.GiftDto;
 import com.mong.mmbs.dto.ResponseDto;
-import com.mong.mmbs.service.DtlpageService;
+import com.mong.mmbs.service.GiftService;
 
-@RestController
 @RequestMapping("/api/auth")
-public class DtlpageController {
-	@Autowired DtlpageService dtlpageService;
-	@GetMapping("/dtlPage/{productSeq}")
-	public ResponseDto<?>dtlPage(@PathVariable("productSeq")int productSeq){
-	return dtlpageService.dtlPage(productSeq);
+@RestController
+public class GiftController {
+	@Autowired GiftService giftService;
+	@GetMapping("/gift/{giftCode}")
+	public ResponseDto<?>gift(@PathVariable("giftCode")int giftCode){
+		
+		return giftService.gift(giftCode);
 	}
 	
 	
-	@PostMapping("/dtlLikePage")
-	public ResponseDto<?>dtllikePage(@RequestBody DtlLikepageDto requestbody){
-		System.out.println("11111");
-		ResponseDto<?> result = dtlpageService.dtllikePage(requestbody);
+	
+	
+	
+	@PostMapping("/giftorder")
+	public ResponseDto<?>giftorder(@RequestBody GiftDto requsetBody){
 		return null;
 	}
+	
+
 }
