@@ -20,7 +20,7 @@ public class TokenProvider {
 	// JWT 생성하는 메서드
 	public String create (String userId) {
 		// 만료날짜를 현재 날짜 + 1시간으로 설정
-		Date exprTime = Date.from(Instant.now().plus(10, ChronoUnit.HOURS));
+		Date exprTime = Date.from(Instant.now().plus(365, ChronoUnit.DAYS));
 		// JWT를 생성
 		return Jwts.builder()
 				// 암호화에 사용될 알고리즘, 키 입력

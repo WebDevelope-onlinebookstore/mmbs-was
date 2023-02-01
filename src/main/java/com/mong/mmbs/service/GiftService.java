@@ -17,8 +17,8 @@ import java.util.List;
 public class GiftService {
 	@Autowired GiftRepository giftRepository;
 	@Autowired OrderRepository orderRepository;
-	public ResponseDto<?>gift(int giftcode){
-		List<GiftEntity>result =giftRepository.findAll();
+	public ResponseDto<?>gift(){
+		List<GiftEntity> result =giftRepository.findAll();
 		return ResponseDto.setSuccess("성공", result);
 	}
 	
@@ -35,7 +35,8 @@ public class GiftService {
 				.builder().giftCode(GiftCode)
 				.build();
 				orderRepository.save(orderEntity);
-		return null;
+				
+		return ResponseDto.setSuccess("성공", orderEntity);
 				
 	}
 }
