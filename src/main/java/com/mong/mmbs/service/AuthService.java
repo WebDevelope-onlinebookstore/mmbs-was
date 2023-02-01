@@ -1,5 +1,8 @@
 package com.mong.mmbs.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -7,12 +10,15 @@ import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.FindIdDto;
 import com.mong.mmbs.dto.FindPasswordDto;
+import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
 import com.mong.mmbs.dto.SignUpDto;
+import com.mong.mmbs.entity.CartEntity;
 import com.mong.mmbs.entity.RecommendEntity;
 import com.mong.mmbs.entity.UserEntity;
+import com.mong.mmbs.repository.CartRepository;
 import com.mong.mmbs.repository.RecommendRepository;
 import com.mong.mmbs.repository.UserRepository;
 import com.mong.mmbs.security.TokenProvider;
@@ -42,12 +48,17 @@ public class AuthService {
     
     public ResponseDto<?> findPassword(FindPasswordDto dto){
     	String userId = dto.getUserId();
-    	String userName = dto.getUserName();
-    	String userEmail = dto.getUserEmail();
+//    	String userName = dto.getUserName();
+//    	String userEmail = dto.getUserEmail();
     	
-    	UserEntity userEntity = userRepository.findByUserIdAndUserNameAndUserEmail(userId, userName, userEmail);
+    	UserEntity userEntity = findPasswordByUserId(userId);
     	if(userEntity == null) return ResponseDto.setFailed("일치하는 정보가 없음");
     	return ResponseDto.setSuccess("성공", userEntity.getUserPassword());
+    }
+    
+    public UserEntity findPasswordByUserId(String userId) {
+    	Optional<UserEntity> userInfo = userRepository.findById(userId);
+    	return userInfo.get();
     }
 
     public ResponseDto<?> signUp(SignUpDto dto) {
@@ -129,6 +140,7 @@ public class AuthService {
     	try {
     		userEntity = userRepository.findByUserId(userId);    
     		boolean matched = passwordEncoder.matches(userPassword, userEntity.getUserPassword());
+//    		System.out.println("userId : " + userId + "userEntity : " + userEntity + "userPassword : " + userPassword);
     		if (!matched) return ResponseDto.setFailed("Password Not Matched");
     	} catch (Exception error) {
     		return ResponseDto.setFailed("DataBase Error");
