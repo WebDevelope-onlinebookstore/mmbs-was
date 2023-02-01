@@ -2,7 +2,6 @@ package com.mong.mmbs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mong.mmbs.dto.DtlLikepageDto;
 import com.mong.mmbs.dto.ResponseDto;

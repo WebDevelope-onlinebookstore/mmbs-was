@@ -9,7 +9,6 @@ import com.mong.mmbs.entity.GiftEntity;
 import com.mong.mmbs.entity.OrderEntity;
 import com.mong.mmbs.repository.GiftRepository;
 import com.mong.mmbs.repository.OrderRepository;
-import com.mong.mmbs.repository.UserRepository;
 
 import java.util.List;
 

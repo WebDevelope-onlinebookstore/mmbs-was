@@ -27,7 +27,7 @@ public class GiftController {
 	
 	@PostMapping("/giftorder")
 	public ResponseDto<?>giftorder(@RequestBody GiftDto requsetBody){
-		return null;
+		return giftService.giftorder(requsetBody);
 	}
 	
 

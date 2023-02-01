@@ -1,14 +1,10 @@
 package com.mong.mmbs.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.mong.mmbs.dto.SignUpDto;
-import com.mong.mmbs.dto.UserUpdateDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

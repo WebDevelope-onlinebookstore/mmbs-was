@@ -8,13 +8,11 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data // @Getter @Setter
 @Table(name = "board")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"id, title"})
 public class Board {
     @Id @GeneratedValue
     private Long id;
