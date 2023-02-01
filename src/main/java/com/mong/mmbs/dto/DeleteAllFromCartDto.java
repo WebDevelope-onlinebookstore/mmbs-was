@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FindIdDto {
+public class DeleteAllFromCartDto {
 	@NotBlank
-	private String userName;
-	@NotBlank
-	private String userEmail;
-	
+	private String cartUserId;
+
 }
