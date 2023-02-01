@@ -5,18 +5,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="order")
-@Entity(name="order")
+@Table(name="orders")
+@Entity(name="orders")
+@Builder
 public class OrderEntity {
 //	주문번호 uuid
 	@Id
-	private String orderNumber;
+	private int orderNumber;
 //	회원여부
 	private boolean orderUserWhether;
 //	비회원 비밀번호
@@ -24,7 +26,7 @@ public class OrderEntity {
 //	회원 아이디
 	private String orderUserId;
 //	사은품
-	private String giftCode;
+	private int giftCode;
 //	주문자 이름
 	private String orderUserName;
 //	주문자 전화번호
