@@ -16,10 +16,10 @@ import com.mong.mmbs.service.GiftService;
 @RestController
 public class GiftController {
 	@Autowired GiftService giftService;
-	@GetMapping("/gift/{giftCode}")
-	public ResponseDto<?>gift(@PathVariable("giftCode")int giftCode){
+	@GetMapping("/gift")
+	public ResponseDto<?>gift(){
 		
-		return giftService.gift(giftCode);
+		return giftService.gift();
 	}
 	
 	
