@@ -37,7 +37,7 @@ public class AuthController {
 		ResponseDto<?> result = authService.findId(requestBody);
 		return result;
 	}
-	@GetMapping("/findPassword")
+	@PostMapping("/findPassword")
 	public ResponseDto<?> findPassword(@RequestBody FindPasswordDto requestBody){
 		ResponseDto<?> result = authService.findPassword(requestBody);
 		return result;
