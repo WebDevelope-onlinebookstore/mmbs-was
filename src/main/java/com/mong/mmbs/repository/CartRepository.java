@@ -10,7 +10,10 @@ import com.mong.mmbs.entity.CartEntity;
 @Repository
 public interface CartRepository extends JpaRepository<CartEntity, Integer>{
 
-	public CartEntity findByCartUserId(String cartUserId);
-	public List<CartEntity> findByCartUserIdAndCartProductId(String cartUserId, int cartProudctId);
+	public CartEntity findByCartUserIdAndCartProductId(String cartUserId, int cartProudctId);
+	
+	public List<CartEntity> findByCartUserId(String cartUserId);
+	public boolean existsByCartUserIdAndCartProductId(String cartUserId, int cartProudctId);
 	public void deleteAllByCartUserIdAndCartProductId(String cartUserId, int cartProudctId);
+	
 }
