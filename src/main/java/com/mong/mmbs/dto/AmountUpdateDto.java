@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FindIdDto {
+public class AmountUpdateDto {
 	@NotBlank
-	private String userName;
+	private String cartUserId;
 	@NotBlank
-	private String userEmail;
-	
+	private int cartProductId;
+	@NotBlank
+	private int cartProductAmount;
 }

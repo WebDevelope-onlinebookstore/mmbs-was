@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mong.mmbs.dto.AmountUpdateDto;
+import com.mong.mmbs.dto.DeleteAllFromCartDto;
 import com.mong.mmbs.dto.DeleteFromCartDto;
 import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.ResponseDto;
@@ -13,35 +15,82 @@ import com.mong.mmbs.repository.CartRepository;
 
 @Service
 public class CartService {
-	  @Autowired
-	    CartRepository cartRepository;
-	  public ResponseDto<?> putInCart (PutInCartDto dto){
-	    	
-	    	String cartUserId = dto.getCartUserId();
-	    	int cartProductId = dto.getCartProductId();
-	    	String cartProductName = dto.getCartProductName();
-	    	String cartProductImage = dto.getCartProductImage();
-	    	int cartProductPrice = dto.getCartProductPrice();
-	    	int cartProductAmount = dto.getCartProductAmount();
-//	    	//중복을 찾아서 
-//	    	if (cartEntity == null) {
-//	    	}
-//	    	CartEntity cartEntity = cartRepository.findByCartUserId(cartUserId);
-	    	System.out.println(dto.toString());
-	    	CartEntity cartEntity =null;
-	    	cartEntity = new CartEntity(dto);
-	    	cartRepository.save(cartEntity);
-	    	return ResponseDto.setSuccess("장바구니에 담겼습니다.", null);
-	    	
+	@Autowired
+	CartRepository cartRepository;
 
-	    	}
-	    public ResponseDto<?> deleteFromCart(DeleteFromCartDto dto){
-	    	
-	    	String cartUserId = dto.getCartUserId();
-	    	int cartProductId = dto.getCartProductId();
-	    	List<CartEntity> cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
-	    	if(cartEntity != null) 
-	    	cartRepository.deleteAll(cartEntity);
-	    	return ResponseDto.setSuccess("장바구니에서 삭제되었습니다 .", null);
-	    }
+	public ResponseDto<?> putInCart(PutInCartDto dto) {
+		String cartUserId = dto.getCartUserId();
+		int cartProductId = dto.getCartProductId();
+
+		System.out.println(dto.toString());
+		CartEntity cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
+		if (cartEntity == null) {
+			cartEntity = new CartEntity(dto);
+			cartRepository.save(cartEntity);
+			return ResponseDto.setSuccess("장바구니에 담겼습니다.", null);
+		} else
+			return ResponseDto.setFailed("장바구니에 이미 담겨 있습니다.");
+//	    	{cartEntity = cartEntity.AmountUpdate(dto);
+//	    		cartRepository.save(cartEntity);
+	}
+
+	public ResponseDto<?> deleteFromCart(DeleteFromCartDto dto) {
+
+		String cartUserId = dto.getCartUserId();
+		int cartProductId = dto.getCartProductId();
+		CartEntity cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
+		if (cartEntity != null)
+			cartRepository.delete(cartEntity);
+		return ResponseDto.setSuccess("장바구니에서 삭제되었습니다 .", null);
+	}
+
+	public ResponseDto<?> amountUpdate(AmountUpdateDto dto) {
+		String cartUserId = dto.getCartUserId();
+		int cartProductId = dto.getCartProductId();
+		int cartProductAmount = dto.getCartProductAmount();
+		CartEntity cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
+//	    	cartEntity = cartEntity.AmountUpdate(dto);
+		cartEntity.setCartProductAmount(cartProductAmount);
+		cartRepository.save(cartEntity);
+		return ResponseDto.setSuccess("장바구니에서 수정됬었습니다 .", null);
+	}
+
+	public ResponseDto<?> deleteAllFromCart(DeleteAllFromCartDto dto) {
+
+		String cartUserId = dto.getCartUserId();
+		
+		List<CartEntity>cartEntity = cartRepository.findByCartUserId(cartUserId);
+		if (cartEntity != null)
+			cartRepository.deleteAll(cartEntity);
+		return ResponseDto.setSuccess("장바구니에서 전부 삭제되었습니다 .", null);
+	}
+	public ResponseDto<?> cartAllAmount(DeleteAllFromCartDto dto) {
+
+		String cartUserId = dto.getCartUserId();
+			
+		List<CartEntity>cartEntity = cartRepository.findByCartUserId(cartUserId);
+		int total = 0;
+		if (cartEntity != null){ 
+			for (CartEntity cartEntity2 : cartEntity) {
+			total +=cartEntity2.getCartProductAmount();
+			}
+		}
+		
+		return ResponseDto.setSuccess("장바구니에 담긴 책의 총수량", total);
+	}
+	public ResponseDto<?> cartTotalPrice(DeleteFromCartDto dto) {
+
+		String cartUserId = dto.getCartUserId();
+		int cartProductId = dto.getCartProductId();
+			
+		List<CartEntity>cartEntity = cartRepository.findByCartUserId(cartUserId);
+		int price= 0;
+		if (cartEntity != null){ 
+			for (CartEntity cartEntity2 : cartEntity) {
+				price =cartEntity2.getCartProductPrice()*cartEntity2.getCartProductAmount();
+				}
+		
+		}
+		return ResponseDto.setSuccess("장바구니에 담긴 책의 총 가격", null);
+	}
 }
