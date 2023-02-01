@@ -69,5 +69,4 @@ public class UserEntity {
 		this.userPhone = dto.getUserPhone();
 		this.userKidBirth = dto.getUserKidBirth();
 	}
-	
 }

@@ -27,8 +27,6 @@ public class SignUpDto {
 	@NotBlank
 	private String userAddressDetail;
 	
-	
-	
 	private String userKidBirth;
 	private String recommendedUserId;
 }
