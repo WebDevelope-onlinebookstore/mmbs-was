@@ -22,14 +22,19 @@ public class ProductService {
 		List<ProductEntity> productAgeList = null;
 		// 0~3
 		if (productAgeCategory.equals("1")) {
-			for(Integer i = 1; i<6; i++) {
-				if(productSubAgeCategory.equals(i.toString())) {
+			for(Integer i = 0; i<6; i++) {
+				if
+//				(i==0) {
+//					productAgeList = productRepository.findByProductAge(productAgeCategory);
+//				}
+//			else
+				(productSubAgeCategory.equals(i.toString())) {
 					productAgeList = productRepository.findByProductAgeAndProductSubAge(productAgeCategory, productSubAgeCategory);
 				}
 			}
 		} // 4~7
 		else if (productAgeCategory.equals("2")) {
-			for(Integer i = 1; i<6; i++) {
+			for(Integer i = 0; i<6; i++) {
 				if(productSubAgeCategory.equals(i.toString())) {
 					productAgeList = productRepository.findByProductAgeAndProductSubAge(productAgeCategory, productSubAgeCategory);
 				}
@@ -41,37 +46,39 @@ public class ProductService {
 		// 장르별		
 		
 	public ResponseDto<?> getProductGenreList(String productGenreCategory, String productSubGenreCategory) {
+		System.out.println(productGenreCategory);
+		
 		List<ProductEntity> productGenreList = null; 
 			if (productGenreCategory.equals("국내도서")) {
-				for(Integer i = 1; i<7; i++) {
+				for(Integer i = 0; i<7; i++) {
 					if(productSubGenreCategory.equals(i.toString())) {
 						productGenreList = productRepository.findByProductGenreAndProductSubGenre(productGenreCategory, productSubGenreCategory);
 					}
 				}
 			}
 			else if (productGenreCategory.equals("해외도서")) {
-				for(Integer i = 1; i<5; i++) {
+				for(Integer i = 0; i<5; i++) {
 					if(productSubGenreCategory.equals(i.toString())) {
 						productGenreList = productRepository.findByProductGenreAndProductSubGenre(productGenreCategory, productSubGenreCategory);
 					}
 				}
 			}
 			else if (productGenreCategory.equals("전집")) {
-				for(Integer i = 1; i<6; i++) {
+				for(Integer i = 0; i<6; i++) {
 					if(productSubGenreCategory.equals(i.toString())) {
 						productGenreList = productRepository.findByProductGenreAndProductSubGenre(productGenreCategory, productSubGenreCategory);
 					}
 				}
 			}
 			else if (productGenreCategory.equals("부모님의 서재")) {
-				for(Integer i = 1; i<5; i++) {
+				for(Integer i = 0; i<5; i++) {
 					if(productSubGenreCategory.equals(i.toString())) {
 						productGenreList = productRepository.findByProductGenreAndProductSubGenre(productGenreCategory, productSubGenreCategory);
 					}
 				}
 			}
 			else if (productGenreCategory.equals("토이/놀이")) {
-				for(Integer i = 1; i<4; i++) {
+				for(Integer i = 0; i<4; i++) {
 					if(productSubGenreCategory.equals(i.toString())) {
 						productGenreList = productRepository.findByProductGenreAndProductSubGenre(productGenreCategory, productSubGenreCategory);
 					}
