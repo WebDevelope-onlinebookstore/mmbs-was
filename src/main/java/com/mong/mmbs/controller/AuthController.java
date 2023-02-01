@@ -1,11 +1,11 @@
 package com.mong.mmbs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.mong.mmbs.dto.FindIdDto;
 import com.mong.mmbs.dto.FindPasswordDto;
@@ -33,7 +33,7 @@ public class AuthController {
 		ResponseDto<?> result = authService.findId(requestBody);
 		return result;
 	}
-	@GetMapping("/findPassword")
+	@PostMapping("/findPassword")
 	public ResponseDto<?> findPassword(@RequestBody FindPasswordDto requestBody){
 		ResponseDto<?> result = authService.findPassword(requestBody);
 		return result;
