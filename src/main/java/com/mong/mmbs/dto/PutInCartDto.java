@@ -12,11 +12,14 @@ import lombok.NoArgsConstructor;
 public class PutInCartDto {
 	@NotBlank
 	private String cartUserId;
-	private Integer cartProductId;
+	@NotBlank
+	private int cartProductId;
 	@NotBlank
 	private String cartProductName;
 	@NotBlank
 	private String cartProductImage;
-	private Integer cartProductPrice;
-	private Integer cartProductAmount;
+	@NotBlank
+	private int cartProductPrice;
+	@NotBlank
+	private int cartProductAmount;
 }

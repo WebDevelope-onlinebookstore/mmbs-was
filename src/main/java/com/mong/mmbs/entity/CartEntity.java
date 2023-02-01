@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.mong.mmbs.dto.AmountUpdateDto;
 import com.mong.mmbs.dto.PutInCartDto;
 
 import com.mong.mmbs.dto.SignUpDto;
@@ -47,9 +48,13 @@ public class CartEntity {
 		this.cartProductPrice = dto.getCartProductPrice();
 		this.cartProductAmount = dto.getCartProductAmount();
 	}
-//	public CartEntity (PutInCartDto dto) {
-//		this.cartProductAmount += dto.getCartProductAmount();
-//		
+//	public CartEntity AmountUpdate(PutInCartDto dto) {
+//		this.cartProductAmount = dto.getCartProductAmount();
+//		return CartEntity.builder().cartProductAmount(cartProductAmount).build();
 //	}
+//	public CartEntity AmountUpdate(AmountUpdateDto dto) {
+//		return CartEntity.builder().cartProductAmount(getCartProductAmount()).build();
+//	}
+	
 	
 }
