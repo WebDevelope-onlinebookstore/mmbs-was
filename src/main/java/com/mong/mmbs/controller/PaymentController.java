@@ -20,4 +20,6 @@ public class PaymentController {
 	public ResponseDto<?> getUser(@PathVariable("userId")String userId) {
 		return userService.getUser(userId);
 	}
+
+	
 }
