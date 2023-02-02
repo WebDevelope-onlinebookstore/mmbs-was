@@ -44,23 +44,4 @@ public class AuthController {
 		ResponseDto<SignInResponseDto> result = authService.signIn(requestBody);
 		return result;
 	}
-	
-//	@PostMapping("/userUpdate")
-//	public ResponseDto<UserUpdateReponseDto> userUpdate(@RequestBody UserUpdateDto requestBody) {
-//		ResponseDto<UserUpdateReponseDto> result = authService.userUpdate(requestBody);
-//		return result;
-//	}
-	
-	
-//	@GetMapping("/userUpdate/{userId}")
-//	public ResponseDto<?> userUpdate(@PathVariable("userId") String userId) {
-//		return userUpdateService.userUpdate(userId);
-//		return null;
-//	}
-	
-//	@PostMapping("/userUpdate/{userId}")
-//	public ResponseDto<?> userUpdatea(@RequestBody UserUpdateDto requestBody) {
-////		ResponseDto<?> result = authService.
-//		return null;
-//	}
 }
