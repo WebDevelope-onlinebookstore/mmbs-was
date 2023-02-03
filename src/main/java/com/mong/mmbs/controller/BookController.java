@@ -26,4 +26,8 @@ public class BookController<BookListServicevice> {
 		return productService.getProductGenreList(productGenreCategory, productSubGenreCategory);
 	}
 	
+	@GetMapping("/{productSeq}")
+	public ResponseDto<?> getProduct(@PathVariable("productSeq") int productSeq) {
+		return productService.getProduct(productSeq);
+	}
 }

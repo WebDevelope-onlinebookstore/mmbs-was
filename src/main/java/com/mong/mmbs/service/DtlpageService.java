@@ -15,7 +15,6 @@ public class DtlpageService {
 
 	@Autowired ProductRepository productRepository;
 	@Autowired CartRepository cartRepository;
-	@Autowired DtlLikepageDto dtlLikepageDto;
 	
 	public ResponseDto<?>dtlPage(int productSeq){
 		
