@@ -85,11 +85,19 @@ public class ProductService {
 				}
 			}
 			return ResponseDto.setSuccess("Success", productGenreList);
+		}
+
+		public ResponseDto<?> getProduct(int productSeq) {
+			ProductEntity product = null;
+			try {
+				product = productRepository.findByProductSeq(productSeq);
+			} catch (Exception exception) {
+				return ResponseDto.setFailed("failed");
 			}
+			return ResponseDto.setSuccess("success", product);
+		}
 	
-}
-
-
+	}
 
 //나이와 장르를 합쳐서 하는 방법
 
