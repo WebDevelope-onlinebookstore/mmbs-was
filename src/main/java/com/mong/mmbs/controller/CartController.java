@@ -1,6 +1,7 @@
 package com.mong.mmbs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.mong.mmbs.dto.DeleteAllFromCartDto;
 import com.mong.mmbs.dto.DeleteFromCartDto;
 import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.dto.ShowInCartDto;
 import com.mong.mmbs.service.CartService;
 
 @RestController
@@ -18,10 +20,15 @@ import com.mong.mmbs.service.CartService;
 public class CartController {
 
 	@Autowired CartService cartService;
-	@PostMapping("/cartInsert")//상세 페이지에서 담는거
+	@PostMapping("/cartInsert")//상세 페이지에서 장바구니로 담는거
 	public ResponseDto<?> putInCart(@RequestBody PutInCartDto requestBody){
 		System.out.println(requestBody.toString());
 		ResponseDto<?> result = cartService.putInCart(requestBody);
+		return result;
+	}
+	@PostMapping("/showInCart")//상세 페이지에서 장바구니로 담는거
+	public ResponseDto<?> showInCart(@AuthenticationPrincipal String userid){
+		ResponseDto<?> result = cartService.showInCart(userid);
 		return result;
 	}
 	@PostMapping("/cartDelete")//장바구니 화면에서 지우는거
@@ -39,7 +46,7 @@ public class CartController {
 		ResponseDto<?> result = cartService.deleteAllFromCart(requestBody);
 		return result;
 	}
-	@PostMapping("/cartAllAmount")//장바구니 화면에서 지우는거
+	@PostMapping("/cartAllAmount")//장바구니 화면에서 전체 지우는거
 	public ResponseDto<?> cartAllAmount(@RequestBody DeleteAllFromCartDto requestBody){
 		ResponseDto<?> result = cartService.cartAllAmount(requestBody);
 		return result;

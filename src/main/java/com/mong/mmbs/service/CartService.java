@@ -10,6 +10,7 @@ import com.mong.mmbs.dto.DeleteAllFromCartDto;
 import com.mong.mmbs.dto.DeleteFromCartDto;
 import com.mong.mmbs.dto.PutInCartDto;
 import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.dto.ShowInCartDto;
 import com.mong.mmbs.entity.CartEntity;
 import com.mong.mmbs.repository.CartRepository;
 
@@ -17,6 +18,12 @@ import com.mong.mmbs.repository.CartRepository;
 public class CartService {
 	@Autowired
 	CartRepository cartRepository;
+	
+	public ResponseDto<?> showInCart(String userId){
+		List<CartEntity> cartEntity = cartRepository.findByCartUserId(userId);
+		if(cartEntity==null) return ResponseDto.setFailed("장바구니에 담긴 상품이 없습니다."); 
+		return ResponseDto.setSuccess("성공", cartEntity);
+	}
 
 	public ResponseDto<?> putInCart(PutInCartDto dto) {
 		String cartUserId = dto.getCartUserId();
