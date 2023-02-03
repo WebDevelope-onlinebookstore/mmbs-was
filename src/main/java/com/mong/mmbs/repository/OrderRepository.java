@@ -7,5 +7,6 @@ import com.mong.mmbs.entity.OrderEntity;
 
 @Repository
 public interface OrderRepository extends JpaRepository<OrderEntity, Integer>{
+
 	public OrderEntity findByOrderNumber(int orderNumber);
 }

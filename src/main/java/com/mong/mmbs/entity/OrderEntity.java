@@ -1,10 +1,13 @@
 package com.mong.mmbs.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.mong.mmbs.dto.OrderDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,12 +23,12 @@ import lombok.NoArgsConstructor;
 public class OrderEntity {
 //	주문번호 uuid
 	@Id
-	private int orderNumber;
+	private String orderNumber;
 //	회원여부
 	private boolean orderUserWhether;
 //	비회원 비밀번호
 	private String orderGuestPassword;
-//	회원 아이디
+//	회원 아이디xx
 	private String orderUserId;
 //	사은품
 	private int giftCode;
@@ -55,4 +58,18 @@ public class OrderEntity {
 	private int orderShipNumber;
 //	배송 메세지
 	private String orderShipMessage; // text
+
+	public OrderEntity(OrderDto dto) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		this.orderNumber = dto.getOrderNumber();
+		this.orderUserName = dto.getOrderUserName();
+		this.orderUserPhone = dto.getOrderUserPhone();
+		this.orderUserEmail = dto.getOrderUserEmail();
+		this.orderRecieptName = dto.getOrderRecieptName();
+		this.orderRecieptPhone =dto.getOrderRecieptPhone();
+		this.orderShipAddress = dto.getOrderShipAddress();
+		this.orderShipAddressDetail = dto.getOrderShipAddressDetail();
+		this.orderDatetime = dateFormat.format(new Date());
+	}
 }
