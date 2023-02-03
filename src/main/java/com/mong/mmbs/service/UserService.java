@@ -1,8 +1,6 @@
 package com.mong.mmbs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.ResponseDto;
@@ -14,8 +12,6 @@ import com.mong.mmbs.repository.UserRepository;
 public class UserService {
 	
 	@Autowired UserRepository userRepository;
-	
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
     public ResponseDto<?> getUser(String userId) {
     	UserEntity user = null;

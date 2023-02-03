@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GiftDto {
 	private int giftCode; 
+	// private int
 }

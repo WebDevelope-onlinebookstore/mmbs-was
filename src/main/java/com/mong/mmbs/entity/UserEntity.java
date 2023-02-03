@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.core.format.DataFormatDetector;
 import com.mong.mmbs.dto.SignUpDto;
 import com.mong.mmbs.dto.UserUpdateDto;
 
