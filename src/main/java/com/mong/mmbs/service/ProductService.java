@@ -43,5 +43,15 @@ public class ProductService {
 
 			return ResponseDto.setSuccess("Success", productGenreList);
 	}
+
+	public ResponseDto<?> getProduct(int productSeq) {
+		ProductEntity product = null;
+		try {
+			product = productRepository.findByProductSeq(productSeq);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("failed");
+		}
+		return ResponseDto.setSuccess("success", product);
+	}
 	
 }
