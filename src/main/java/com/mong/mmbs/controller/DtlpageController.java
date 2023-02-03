@@ -25,8 +25,8 @@ public class DtlpageController {
 	
 	@PostMapping("/dtlLikePage")
 	public ResponseDto<?>dtllikePage(@RequestBody DtlLikepageDto requestbody){
-		System.out.println("11111");
-		ResponseDto<?> result = dtlpageService.dtllikePage(requestbody);
-		return null;
+		ResponseDto<?> LikePage = dtlpageService.dtllikePage(requestbody);
+		return LikePage;
 	}
+
 }

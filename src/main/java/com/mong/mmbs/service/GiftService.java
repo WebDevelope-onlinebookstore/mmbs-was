@@ -9,7 +9,6 @@ import com.mong.mmbs.entity.GiftEntity;
 import com.mong.mmbs.entity.OrderEntity;
 import com.mong.mmbs.repository.GiftRepository;
 import com.mong.mmbs.repository.OrderRepository;
-import com.mong.mmbs.repository.UserRepository;
 
 import java.util.List;
 
@@ -24,10 +23,12 @@ public class GiftService {
 	
 	public ResponseDto<?>giftorder(GiftDto dto){
 		int GiftCode = dto.getGiftCode();
-		OrderEntity orderEntity = OrderEntity
-				.builder().giftCode(GiftCode)
-				.build();
-				orderRepository.save(orderEntity);
+		int orderNumber = 10;
+
+		OrderEntity orderEntity = orderRepository.findByOrderNumber(orderNumber);
+		orderEntity.setGiftCode(GiftCode);
+
+		orderRepository.save(orderEntity);
 				
 		return ResponseDto.setSuccess("성공", orderEntity);
 				

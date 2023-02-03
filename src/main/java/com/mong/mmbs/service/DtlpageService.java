@@ -2,17 +2,20 @@ package com.mong.mmbs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mong.mmbs.dto.DtlLikepageDto;
 import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.entity.CartEntity;
 import com.mong.mmbs.entity.ProductEntity;
+import com.mong.mmbs.repository.CartRepository;
 import com.mong.mmbs.repository.ProductRepository;
 
 @Service
 public class DtlpageService {
 
 	@Autowired ProductRepository productRepository;
+	@Autowired CartRepository cartRepository;
+	@Autowired DtlLikepageDto dtlLikepageDto;
 	
 	public ResponseDto<?>dtlPage(int productSeq){
 		
@@ -37,5 +40,6 @@ public class DtlpageService {
 		return ResponseDto.setSuccess("성공", null);
 		
 	}
+
 	
 }
