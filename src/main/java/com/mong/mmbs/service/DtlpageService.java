@@ -12,7 +12,6 @@ import com.mong.mmbs.repository.ProductRepository;
 @Service
 public class DtlpageService {
 
-	
 	@Autowired ProductRepository productRepository;
 	
 	public ResponseDto<?>dtlPage(int productSeq){

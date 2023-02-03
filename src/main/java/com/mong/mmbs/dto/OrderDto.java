@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderDto {
 	@NotBlank
-	private int orderNumber;
+	private String orderNumber;
 //	회원여부
 	private boolean orderUserWhether;
 //	비회원 비밀번호
@@ -36,12 +36,12 @@ public class OrderDto {
 	private String orderShipAddress; // text
 	@NotBlank
 	private String orderShipAddressDetail; // text
-	@NotBlank
-	private int orderTotalPrice;
-	@NotBlank
-	private int orderStatus;
-	@NotBlank
-	private String orderShipCompany;
-	@NotBlank
-	private int orderShipNumber;
+	// @NotBlank
+	// private int orderTotalPrice;
+	// @NotBlank
+	// private int orderStatus;
+	// @NotBlank
+	// private String orderShipCompany;
+	// @NotBlank
+	// private int orderShipNumber;
 }
