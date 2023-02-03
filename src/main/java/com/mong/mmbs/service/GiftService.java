@@ -30,10 +30,12 @@ public class GiftService {
 	
 	public ResponseDto<?>giftorder(GiftDto dto){
 		int GiftCode = dto.getGiftCode();
-		OrderEntity orderEntity = OrderEntity
-				.builder().giftCode(GiftCode)
-				.build();
-				orderRepository.save(orderEntity);
+		int orderNumber = 10;
+
+		OrderEntity orderEntity = orderRepository.findByOrderNumber(orderNumber);
+		orderEntity.setGiftCode(GiftCode);
+
+		orderRepository.save(orderEntity);
 				
 		return ResponseDto.setSuccess("성공", orderEntity);
 				

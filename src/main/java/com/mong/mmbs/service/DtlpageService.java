@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.DtlLikepageDto;
 import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.entity.CartEntity;
 import com.mong.mmbs.entity.ProductEntity;
+import com.mong.mmbs.repository.CartRepository;
 import com.mong.mmbs.repository.ProductRepository;
 
 @Service
@@ -13,6 +15,8 @@ public class DtlpageService {
 
 	
 	@Autowired ProductRepository productRepository;
+	@Autowired CartRepository cartRepository;
+	@Autowired DtlLikepageDto dtlLikepageDto;
 	
 	public ResponseDto<?>dtlPage(int productSeq){
 		
@@ -37,5 +41,6 @@ public class DtlpageService {
 		return ResponseDto.setSuccess("성공", null);
 		
 	}
+
 	
 }
