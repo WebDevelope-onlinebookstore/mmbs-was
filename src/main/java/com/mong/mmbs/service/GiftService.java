@@ -22,13 +22,6 @@ public class GiftService {
 		return ResponseDto.setSuccess("성공", result);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	public ResponseDto<?>giftorder(GiftDto dto){
 		int GiftCode = dto.getGiftCode();
 		OrderEntity orderEntity = OrderEntity

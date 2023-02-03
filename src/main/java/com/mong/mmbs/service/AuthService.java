@@ -128,19 +128,10 @@ public class AuthService {
     	String userId = dto.getUserId();
     	String userPassword = dto.getUserPassword();
     	
-    	// 암호화 적용으로 더 이상 불필요 2023.01.27. 이승아
-//    	try {
-//    		boolean existed = userRepository.existsByUserIdAndUserPassword(userId, userPassword);
-//    		if(!existed) return ResponseDto.setFailed("Sign In Information Does Not Match");    		
-//    	} catch (Exception error) {
-//    		return ResponseDto.setFailed("DataBase Error");
-//    	}
-    	
     	UserEntity userEntity = null;
     	try {
     		userEntity = userRepository.findByUserId(userId);    
     		boolean matched = passwordEncoder.matches(userPassword, userEntity.getUserPassword());
-//    		System.out.println("userId : " + userId + "userEntity : " + userEntity + "userPassword : " + userPassword);
     		if (!matched) return ResponseDto.setFailed("Password Not Matched");
     	} catch (Exception error) {
     		return ResponseDto.setFailed("DataBase Error");
