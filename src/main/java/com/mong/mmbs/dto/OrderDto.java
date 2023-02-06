@@ -42,6 +42,6 @@ public class OrderDto {
 	// private int orderStatus;
 	// @NotBlank
 	// private String orderShipCompany;
-	// @NotBlank
-	// private int orderShipNumber;
+	@NotBlank
+	private int orderShipNumber;
 }
