@@ -54,4 +54,13 @@ public class ProductService {
 		return ResponseDto.setSuccess("success", product);
 	}
 	
+//	public ResponseDto<?> getproductLikeList(int productLike) {
+//		List<ProductEntity> productLikeList = null;
+//		if(productLike > productLike) {
+//			productLikeList = productRepository.findByProducLike(productLike);
+//			
+//			}
+//		return ResponseDto.setSuccess("success", productLikeList);	
+//}
+	
 }

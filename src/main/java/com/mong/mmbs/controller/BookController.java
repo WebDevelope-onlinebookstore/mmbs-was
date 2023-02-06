@@ -30,4 +30,9 @@ public class BookController<BookListServicevice> {
 	public ResponseDto<?> getProduct(@PathVariable("productSeq") int productSeq) {
 		return productService.getProduct(productSeq);
 	}
+	
+//	@GetMapping("/{producLike}")
+//	public ResponseDto<?> getProductLikeList(@PathVariable("productLike") int productLike) {
+//		return productService.getProduct(productLike);
+//	}
 }
