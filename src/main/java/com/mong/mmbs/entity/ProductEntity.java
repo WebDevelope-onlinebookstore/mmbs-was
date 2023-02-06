@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name=“product”)
-@Entity(name=“product”)
+@Table(name="product")
+@Entity(name="product")
 public class ProductEntity {
 //	고유번호
 	@Id

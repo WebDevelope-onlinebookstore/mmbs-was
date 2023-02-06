@@ -14,7 +14,7 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.service.DtlpageService;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/dtl")
 public class DtlpageController {
 	@Autowired DtlpageService dtlpageService;
 	@GetMapping("/dtlPage/{productSeq}")
