@@ -15,13 +15,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board {
     @Id @GeneratedValue
-    private Long id;
-    private String title;
-    private String content;
+    private Long ask_id;
+    private String ask_writer;
+    private String ask_sort;
+    private String ask_content;
+    private String ask_datetime;
+    private int ask_status;
+    private String ask_reply;
 
-    public Board(Long id, String title, String content) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
+    public Board(Long ask_id, String ask_writer, String ask_sort,
+    		String ask_content, String ask_datetime, int ask_status, 
+    		String ask_reply ) {
+    	
+        this.ask_id = ask_id;
+        this.ask_writer = ask_writer;
+        this.ask_sort = ask_sort;
+        this.ask_content = ask_content;
+        this.ask_datetime = ask_datetime;
+        this.ask_status = ask_status;
+        this.ask_reply = ask_reply;
     }
 }

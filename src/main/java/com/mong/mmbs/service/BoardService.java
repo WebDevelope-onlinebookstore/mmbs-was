@@ -29,10 +29,15 @@ public class BoardService {
     }
 
     @Transactional
-    public void update(Long id, String title, String content){
-        Board board = boardRepository.findById(id).orElseThrow(NullPointerException::new);
-        board.setTitle(title);
-        board.setContent(content);
+    public void update(Long ask_id, String ask_writer, String ask_sort, String ask_content,
+    		String ask_datetime, int ask_status, String ask_reply){
+        Board board = boardRepository.findById(ask_id).orElseThrow(NullPointerException::new);
+        board.setAsk_writer(ask_writer);
+        board.setAsk_sort(ask_sort);
+        board.setAsk_content(ask_content);
+        board.setAsk_datetime(ask_datetime);
+        board.setAsk_status(ask_status);
+        board.setAsk_reply(ask_reply);
     }
     @Transactional
     public void delete(Board board) {
