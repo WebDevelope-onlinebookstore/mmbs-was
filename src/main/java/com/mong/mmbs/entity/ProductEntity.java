@@ -48,12 +48,8 @@ public class ProductEntity {
 	private int productStock;
 //	좋아요
 	private int productLike;
-//	입고일
-	private String productStockingDate;
 //	상세 설명
 	private String productIntroduceDtl;
-//	간단한 설명
-	private String productIntroduce;
 //	이미지
 	private String productImageUrl;
 //	판매량
