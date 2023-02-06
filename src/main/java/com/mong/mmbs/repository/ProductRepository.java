@@ -10,4 +10,6 @@ public List<ProductEntity> findByProductAge(String productAgeCategory);
 public List<ProductEntity> findByProductAgeAndProductSubAge(String productAgeCategory, String productSubAgeCategory);
 public List<ProductEntity> findByProductGenre(String productGenreCategory);
 public List<ProductEntity> findByProductGenreAndProductSubGenre(String productGenreCategory, String productSubGenreCategory);
+
+//public List<ProductEntity> findByProducLike(int productLike);
 }
