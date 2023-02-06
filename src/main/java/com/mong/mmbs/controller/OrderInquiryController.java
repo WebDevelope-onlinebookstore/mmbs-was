@@ -16,7 +16,7 @@ public class OrderInquiryController {
 	@Autowired OrderInquiryService orderInquiryService;
 	
 	@GetMapping("/orderInquiryPage/{orderNumber}")
-	public ResponseDto<?> getOrderInquiry(@PathVariable("orderNumber") int orderNumber) {
+	public ResponseDto<?> getOrderInquiry(@PathVariable("orderNumber") String orderNumber) {
 		return orderInquiryService.getOrderInquiry(orderNumber);
 	}
 }

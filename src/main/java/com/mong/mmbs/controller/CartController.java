@@ -21,11 +21,11 @@ public class CartController {
 	@Autowired CartService cartService;
 	@PostMapping("/cartInsert")//상세 페이지에서 장바구니로 담는거
 	public ResponseDto<?> putInCart(@RequestBody PutInCartDto requestBody){
-		System.out.println(requestBody.toString());
+		 System.out.println(requestBody.toString());
 		ResponseDto<?> result = cartService.putInCart(requestBody);
 		return result;
 	}
-	@PostMapping("/showInCart")//상세 페이지에서 장바구니로 담는거
+	@PostMapping("/showInCart")//장바구니 담긴거 보기
 	public ResponseDto<?> showInCart(@AuthenticationPrincipal String userid){
 		ResponseDto<?> result = cartService.showInCart(userid);
 		return result;

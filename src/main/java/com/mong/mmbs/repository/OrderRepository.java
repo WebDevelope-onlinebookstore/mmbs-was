@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.mong.mmbs.entity.OrderEntity;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, Integer>{
+public interface OrderRepository extends JpaRepository<OrderEntity, String>{
 
-	public OrderEntity findByOrderNumber(int orderNumber);
+	public OrderEntity findByOrderNumber(String orderNumber);
 }

@@ -1,5 +1,6 @@
 package com.mong.mmbs.service;
 
+import org.apache.logging.log4j.util.StringBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,8 @@ public class GiftService {
 		return ResponseDto.setSuccess("성공", result);
 	}
 	
-	public ResponseDto<?>giftorder(GiftDto dto){
+	public ResponseDto<?>giftorder(GiftDto dto, String orderNumber){
 		int GiftCode = dto.getGiftCode();
-		int orderNumber = 10;
 
 		OrderEntity orderEntity = orderRepository.findByOrderNumber(orderNumber);
 		orderEntity.setGiftCode(GiftCode);

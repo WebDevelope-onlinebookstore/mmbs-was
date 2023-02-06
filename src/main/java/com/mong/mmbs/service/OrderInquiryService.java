@@ -14,7 +14,7 @@ public class OrderInquiryService {
 	@Autowired OrderRepository orderRepository;
 	@Autowired OrderDetailRepository orderDetailRepository;
 	
-	public ResponseDto<?> getOrderInquiry(Integer orderNumber) {
+	public ResponseDto<?> getOrderInquiry(String orderNumber) {
 		OrderEntity order = null;
 		
 		try {

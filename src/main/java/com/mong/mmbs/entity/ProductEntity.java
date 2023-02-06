@@ -1,16 +1,13 @@
 package com.mong.mmbs.entity;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -48,12 +45,8 @@ public class ProductEntity {
 	private int productStock;
 //	좋아요
 	private int productLike;
-//	입고일
-	private String productStockingDate;
 //	상세 설명
 	private String productIntroduceDtl;
-//	간단한 설명
-	private String productIntroduce;
 //	이미지
 	private String productImageUrl;
 //	판매량
