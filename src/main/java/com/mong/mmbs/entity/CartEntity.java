@@ -37,13 +37,15 @@ public class CartEntity {
 //  제품 개 수
 	private int cartProductAmount;
 	
-	public CartEntity(PutInCartDto dto) {
-		this.cartUserId = dto.getCartUserId();
-		this.cartProductId = dto.getCartProductId();
-		this.cartProductName = dto.getCartProductName();
-		this.cartProductImage = dto.getCartProductImage();
-		this.cartProductPrice = dto.getCartProductPrice();
-		this.cartProductAmount = dto.getCartProductAmount();
+
+	// 이렇게쓰는이유??
+	public CartEntity(String cartUserId,int cartProductAmount, ProductEntity productEntity) {
+		this.cartUserId = cartUserId;
+		this.cartProductId = productEntity.getProductSeq();
+		this.cartProductName = productEntity.getProductTitle();
+		this.cartProductImage = productEntity.getProductImageUrl();
+		this.cartProductPrice = productEntity.getProductPrice();
+		this.cartProductAmount = cartProductAmount;
 	}
 //	public CartEntity AmountUpdate(PutInCartDto dto) {
 //		this.cartProductAmount = dto.getCartProductAmount();
