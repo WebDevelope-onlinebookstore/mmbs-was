@@ -25,7 +25,8 @@ public class CartController {
 		ResponseDto<?> result = cartService.putInCart(requestBody);
 		return result;
 	}
-	@PostMapping("/showInCart")//장바구니 담긴거 보기
+
+	@PostMapping("/showInCart")//디비에서 장바구니로 불러오는거
 	public ResponseDto<?> showInCart(@AuthenticationPrincipal String userid){
 		ResponseDto<?> result = cartService.showInCart(userid);
 		return result;
