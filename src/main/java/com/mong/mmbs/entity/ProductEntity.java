@@ -25,7 +25,7 @@ public class ProductEntity {
 	private String productSubGenre;
 //	고유번호
 	private int productIsbn;
-//	제목
+//	제목s
 	private String productTitle;
 //	저자
 	private String productWriter;

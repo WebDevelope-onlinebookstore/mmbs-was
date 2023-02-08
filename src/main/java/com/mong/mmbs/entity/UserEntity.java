@@ -35,10 +35,6 @@ public class UserEntity {
 	private String userName;
 //	전화번호
 	private String userPhone;
-//	등급
-	private String userGrade;
-//	누적 금액
-	private int userTotalAmount;
 //	아이 생일
 	private String userKidBirth;
 //	가입 날짜

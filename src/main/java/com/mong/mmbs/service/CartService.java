@@ -101,25 +101,34 @@ public class CartService {
 		// cartRepository.save(cartEntity);
 	}
 
-	public ResponseDto<?> deleteFromCart(DeleteFromCartDto dto) {
+	public ResponseDto<?> deleteFromCart(String userId, DeleteFromCartDto dto) {
 
-		String cartUserId = dto.getCartUserId();
-		int cartProductId = dto.getCartProductId();
-		CartEntity cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
-		if (cartEntity != null)
+		int cartId = dto.getCartId();
+		CartEntity cartEntity = null;
+		try {
+			cartEntity = cartRepository.findByCartId(cartId);
+			if (cartEntity == null) return ResponseDto.setFailed("Does not Exist Cart");
 			cartRepository.delete(cartEntity);
-		return ResponseDto.setSuccess("장바구니에서 삭제되었습니다 .", null);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
+		
+		List<CartEntity> cartList = new ArrayList<CartEntity>();
+		
+		try {
+			cartList = cartRepository.findByCartUserId(userId);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
+		
+		return ResponseDto.setSuccess("장바구니에서 삭제되었습니다 .", cartList);
 	}
 
 	public ResponseDto<?> amountUpdate(AmountUpdateDto dto) {
-		String cartUserId = dto.getCartUserId();
-		int cartProductId = dto.getCartProductId();
-		int cartProductAmount = dto.getCartProductAmount();
-		CartEntity cartEntity = cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
-		// cartEntity = cartEntity.AmountUpdate(dto);
-		cartEntity.setCartProductAmount(cartProductAmount);
-		cartRepository.save(cartEntity);
-		return ResponseDto.setSuccess("장바구니에서 수정됬었습니다 .", null);
+		List<CartEntity>cartEntity = dto.getSelectCartList();
+//		cartEntity.setCartProductAmount(cartProductAmount);
+		cartRepository.saveAll(cartEntity);
+		return ResponseDto.setSuccess("장바구니에서 수정됬었습니다 .", cartEntity);
 	}
 
 	public ResponseDto<?> deleteAllFromCart(DeleteAllFromCartDto dto) {
@@ -147,19 +156,19 @@ public class CartService {
 		return ResponseDto.setSuccess("장바구니에 담긴 책의 총수량", total);
 	}
 
-	public ResponseDto<?> cartTotalPrice(DeleteFromCartDto dto) {
-
-		String cartUserId = dto.getCartUserId();
-		int cartProductId = dto.getCartProductId();
-
-		List<CartEntity> cartEntity = cartRepository.findByCartUserId(cartUserId);
-		int price = 0;
-		if (cartEntity != null) {
-			for (CartEntity cartEntity2 : cartEntity) {
-				price = cartEntity2.getCartProductPrice() * cartEntity2.getCartProductAmount();
-			}
-
-		}
-		return ResponseDto.setSuccess("장바구니에 담긴 책의 총 가격", null);
-	}
+//	public ResponseDto<?> cartTotalPrice(DeleteFromCartDto dto) {
+//
+//		String cartUserId = dto.getCartUserId();
+//		int cartProductId = dto.getCartProductId();
+//
+//		List<CartEntity> cartEntity = cartRepository.findByCartUserId(cartUserId);
+//		int price = 0;
+//		if (cartEntity != null) {
+//			for (CartEntity cartEntity2 : cartEntity) {
+//				price = cartEntity2.getCartProductPrice() * cartEntity2.getCartProductAmount();
+//			}
+//
+//		}
+//		return ResponseDto.setSuccess("장바구니에 담긴 책의 총 가격", null);
+//	}
 }
