@@ -10,14 +10,17 @@ import com.mong.mmbs.dto.GetOrderInquiryResponseDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.entity.OrderDetailEntity;
 import com.mong.mmbs.entity.OrderEntity;
+import com.mong.mmbs.entity.ProductEntity;
 import com.mong.mmbs.repository.OrderDetailRepository;
 import com.mong.mmbs.repository.OrderRepository;
+import com.mong.mmbs.repository.ProductRepository;
 
 @Service
 public class OrderInquiryService {
 	
 	@Autowired OrderRepository orderRepository;
 	@Autowired OrderDetailRepository orderDetailRepository;
+	@Autowired ProductRepository productRepository;
 
 	// 로그인 된 회원의 userId로 Orders테이블에서 주문리스트 반환
 	public ResponseDto<?> getList(String userId) {
@@ -34,22 +37,24 @@ public class OrderInquiryService {
 	}
 	
 	// 
-	public ResponseDto<?> getOrderInquiry(String orderNumber) {
+	public ResponseDto<?> getOrderInquiry(String orderNumber, String productSeq) {
 
 		OrderEntity order = null;
 		// 해당 주문의 상세 데이터 리스트 같이 반환
 		List<OrderDetailEntity> detailList= new ArrayList<OrderDetailEntity>();
+		// 해당 주문의 제품 리스트 같이 반환
+		List<ProductEntity> productList= new ArrayList<ProductEntity>();
 
 		try {
 			order = orderRepository.findByOrderNumber(orderNumber);
 			detailList = orderDetailRepository.findByOrderNumber(orderNumber);
+			productList = productRepository.findByProductSeq(productSeq);
 		} catch (Exception exception) {
 			return ResponseDto.setFailed("Database Error");
 		}
-		GetOrderInquiryResponseDto getOrderInquiryResponseDto = new GetOrderInquiryResponseDto(order, detailList);
-		// return ResponseDto.setSuccess("Success", order);
+		GetOrderInquiryResponseDto getOrderInquiryResponseDto = new GetOrderInquiryResponseDto(order, detailList, productList);
 		return ResponseDto.setSuccess("Suceess" , getOrderInquiryResponseDto);
 	}
 
-	
+
 }
