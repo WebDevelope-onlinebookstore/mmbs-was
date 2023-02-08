@@ -32,8 +32,8 @@ public class CartController {
 		return result;
 	}
 	@PostMapping("/cartDelete")//장바구니 화면에서 지우는거
-	public ResponseDto<?> deleteFromCart(@RequestBody DeleteFromCartDto requestBody){
-		ResponseDto<?> result = cartService.deleteFromCart(requestBody);
+	public ResponseDto<?> deleteFromCart(@AuthenticationPrincipal String userId, @RequestBody DeleteFromCartDto requestBody){
+		ResponseDto<?> result = cartService.deleteFromCart(userId, requestBody);
 		return result;
 	}
 	@PostMapping("/cartAmountUpdate")//장바구니 화면에서 수량 수정
@@ -41,7 +41,7 @@ public class CartController {
 		ResponseDto<?> result = cartService.amountUpdate(requestBody);
 		return result;
 	}
-	@PostMapping("/cartAllDelete")//장바구니 화면에서 지우는거
+	@PostMapping("/cartAllDelete")//장바구니 화면에서 전부 지우는거
 	public ResponseDto<?> deleteAllFromCart(@RequestBody DeleteAllFromCartDto requestBody){
 		ResponseDto<?> result = cartService.deleteAllFromCart(requestBody);
 		return result;
