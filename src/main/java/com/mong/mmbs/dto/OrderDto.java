@@ -10,16 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDto {
-	@NotBlank
-	private String orderNumber;
-//	회원여부
 	private boolean orderUserWhether;
-//	비회원 비밀번호
 	private String orderGuestPassword;
-//	회원 아이디
 	private String orderUserId;
-//	사은품
-	private int giftCode;
+	private int orderGiftCode;
 	@NotBlank
 	private String orderUserName;
 	@NotBlank
@@ -27,21 +21,22 @@ public class OrderDto {
 	@NotBlank
 	private String orderUserEmail;
 	@NotBlank
-	private String orderDatetime; // datetime
-	@NotBlank
 	private String orderRecieptName;
 	@NotBlank
 	private String orderRecieptPhone;
 	@NotBlank
-	private String orderShipAddress; // text
+	private String orderShipAddress;
 	@NotBlank
-	private String orderShipAddressDetail; // text
-	// @NotBlank
-	// private int orderTotalPrice;
-	// @NotBlank
-	// private int orderStatus;
-	// @NotBlank
-	// private String orderShipCompany;
+	private String orderShipAddressDetail;
+	private String orderShipMessage;
+
 	@NotBlank
-	private int orderShipNumber;
+	private int productId;
+  @NotBlank
+  private int orderCount;
+
+	public boolean getOrderUserWhether() {
+		return this.orderUserWhether;
+	}
+
 }

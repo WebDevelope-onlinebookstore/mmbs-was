@@ -22,4 +22,5 @@ public List<ProductEntity> findTop10ByOrderByProductLikeDesc();
 
 @Query(value = "SELECT * FROM product order by RAND() limit 6",nativeQuery = true)
 List<ProductEntity> findAll();
+public List<ProductEntity> findByProductSeq(String productSeq);
 }
