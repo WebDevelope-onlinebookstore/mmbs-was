@@ -11,7 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeleteFromCartDto {
 	@NotBlank
-	private String cartUserId;
-	@NotBlank
-	private int cartProductId;
+	private int cartId;
 }

@@ -1,6 +1,7 @@
 package com.mong.mmbs.dto;
 
-import javax.validation.constraints.NotBlank;
+import java.util.List;
+import com.mong.mmbs.entity.CartEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,10 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AmountUpdateDto {
-	@NotBlank
-	private String cartUserId;
-	@NotBlank
-	private int cartProductId;
-	@NotBlank
-	private int cartProductAmount;
+	private List<CartEntity> selectCartList;
 }
