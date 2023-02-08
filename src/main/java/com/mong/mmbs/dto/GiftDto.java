@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GiftDto {
-	private int giftCode; 
+	private int orderGiftCode; 
 	// private int
 }

@@ -16,7 +16,6 @@ public class ProductService {
 	@Autowired ProductRepository productRepository;
 	
 	//연령
-	
 	public ResponseDto<?> getProductAgeList(String productAgeCategory, String productSubAgeCategory) {
 		
 		List<ProductEntity> productAgeList = null;

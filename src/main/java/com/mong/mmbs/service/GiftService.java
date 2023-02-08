@@ -23,10 +23,10 @@ public class GiftService {
 	}
 	
 	public ResponseDto<?>giftorder(GiftDto dto, String orderNumber){
-		int GiftCode = dto.getGiftCode();
+		int GiftCode = dto.getOrderGiftCode();
 
 		OrderEntity orderEntity = orderRepository.findByOrderNumber(orderNumber);
-		orderEntity.setGiftCode(GiftCode);
+		orderEntity.setOrderGiftCode(GiftCode);
 
 		orderRepository.save(orderEntity);
 				

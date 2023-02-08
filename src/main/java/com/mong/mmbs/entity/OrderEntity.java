@@ -31,7 +31,7 @@ public class OrderEntity {
 //	회원 아이디xx
 	private String orderUserId;
 //	사은품
-	private int giftCode;
+	private int orderGiftCode;
 //	주문자 이름
 	private String orderUserName;
 //	주문자 전화번호
@@ -62,14 +62,20 @@ public class OrderEntity {
 	public OrderEntity(OrderDto dto) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		
-		this.orderNumber = dto.getOrderNumber();
+	    this.orderNumber = UUID.randomUUID().toString();
+		this.orderUserWhether = dto.getOrderUserWhether();
+		this.orderGuestPassword = dto.getOrderGuestPassword();
+		this.orderUserId = dto.getOrderUserId();
+		this.orderGiftCode = dto.getOrderGiftCode();
 		this.orderUserName = dto.getOrderUserName();
 		this.orderUserPhone = dto.getOrderUserPhone();
 		this.orderUserEmail = dto.getOrderUserEmail();
+		this.orderDatetime = dateFormat.format(new Date());
 		this.orderRecieptName = dto.getOrderRecieptName();
 		this.orderRecieptPhone =dto.getOrderRecieptPhone();
 		this.orderShipAddress = dto.getOrderShipAddress();
 		this.orderShipAddressDetail = dto.getOrderShipAddressDetail();
-		this.orderDatetime = dateFormat.format(new Date());
+		this.orderTotalPrice = product.getProductPrice() * dto.getOrderCount();
+		this.orderShipMessage = dto.getOrderShipMessage();
 	}
 }
