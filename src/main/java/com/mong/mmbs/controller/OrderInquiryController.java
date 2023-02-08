@@ -23,9 +23,8 @@ public class OrderInquiryController {
 	}
 
 	// http://localhost:4080/api/order/orderInquiryPage/~
-	@GetMapping("/orderInquiryPage/{orderNumber}")
-	public ResponseDto<?> getOrderInquiry(@PathVariable("orderNumber") String orderNumber) {
-		return orderInquiryService.getOrderInquiry(orderNumber);
+	@GetMapping("/orderInquiryPage/{orderNumber}/{productSeq}")
+	public ResponseDto<?> getOrderInquiry(@PathVariable("orderNumber") String orderNumber, @PathVariable("productSeq") String productSeq) {
+		return orderInquiryService.getOrderInquiry(orderNumber, productSeq);
 	}
-
 }

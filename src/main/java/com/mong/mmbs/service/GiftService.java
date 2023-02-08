@@ -26,7 +26,7 @@ public class GiftService {
 		int GiftCode = dto.getGiftCode();
 
 		OrderEntity orderEntity = orderRepository.findByOrderNumber(orderNumber);
-		orderEntity.setGiftCode(GiftCode);
+		orderEntity.setOrderGiftCode(GiftCode);
 
 		orderRepository.save(orderEntity);
 				

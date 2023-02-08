@@ -1,11 +1,15 @@
 package com.mong.mmbs.entity;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import com.mong.mmbs.dto.OrderDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -54,8 +58,10 @@ public class OrderEntity {
   private int orderShipNumber;
 //  배송 메세지
   private String orderShipMessage;
+  
   public OrderEntity(OrderDto dto, ProductEntity product) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    
     this.orderNumber = UUID.randomUUID().toString();
     this.orderUserWhether = dto.getOrderUserWhether();
     this.orderGuestPassword = dto.getOrderGuestPassword();

@@ -25,10 +25,4 @@ public class PaymentController {
 	public ResponseDto<?> getUser(@PathVariable("userId")String userId) {
 		return userService.getUser(userId);
 	}
-
-	@PostMapping("/orderInfo")
-	public ResponseDto<?> orderInfo(@RequestBody OrderDto requestBody) {
-		ResponseDto<?> result = orderService.orderInfo(requestBody);
-		return result;
-	}
 }
