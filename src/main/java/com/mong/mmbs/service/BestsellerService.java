@@ -2,7 +2,6 @@ package com.mong.mmbs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -16,14 +15,23 @@ public class BestsellerService {
     @Autowired ProductRepository productRepository;
 
     public ResponseDto<?> Bestseller (){
-        List<ProductEntity> ProductBast = productRepository.findTop10ByOrderByProductLikeDesc();
+        List<ProductEntity> ProductBast=null;
+        try {
+            ProductBast= productRepository.findTop10ByOrderByProductLikeDesc();
+        } catch (Exception exception) {
+            return ResponseDto.setFailed("Database Error");
+        }
         
         return ResponseDto.setSuccess("성공", ProductBast);
     }
 
     public ResponseDto<?> MainImage(){
-        List<ProductEntity> BastImage = productRepository.findAll();
-
+        List<ProductEntity> BastImage = null;
+        try {
+            BastImage = productRepository.findAll();
+        } catch (Exception exception) {
+            return ResponseDto.setFailed("Database Error");
+        }
         return ResponseDto.setSuccess("성공", BastImage);
     }
 
