@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.DtlLikepageDto;
 import com.mong.mmbs.dto.ResponseDto;
-import com.mong.mmbs.entity.CartEntity;
 import com.mong.mmbs.entity.ProductEntity;
 import com.mong.mmbs.repository.CartRepository;
 import com.mong.mmbs.repository.ProductRepository;
@@ -18,8 +17,13 @@ public class DtlpageService {
 	
 	public ResponseDto<?>dtlPage(int productSeq){
 		
-		ProductEntity product=productRepository.findByProductSeq(productSeq);
-		
+		ProductEntity product=null;
+
+		try {
+			product=productRepository.findByProductSeq(productSeq);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
 		return ResponseDto.setSuccess("성공", product);
 	}
 	
@@ -29,13 +33,19 @@ public class DtlpageService {
 //	상세페이지 좋아요
 	public ResponseDto<?>dtllikePage(DtlLikepageDto dto ) {
 		int productSeq = dto.getProductSeq();
-		System.out.println("222222");
-		ProductEntity productEntity = productRepository.findByProductSeq(productSeq);
-		System.out.println("3333");
+		ProductEntity productEntity = null;
+		try {
+			productEntity = productRepository.findByProductSeq(productSeq);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
 		productEntity.setProductLike(productEntity.getProductLike() + 1);
-		System.out.println("4444444");
-		productRepository.save(productEntity);
-		System.err.println("55555555");
+
+		try {
+			productRepository.save(productEntity);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
 		return ResponseDto.setSuccess("성공", null);
 		
 	}

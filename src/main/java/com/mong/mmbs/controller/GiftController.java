@@ -15,6 +15,7 @@ import com.mong.mmbs.service.GiftService;
 @RestController
 public class GiftController {
 	@Autowired GiftService giftService;
+	// 사은품 get
 	@GetMapping("/gift")
 	public ResponseDto<?>gift(){
 		
@@ -24,7 +25,7 @@ public class GiftController {
 	
 	
 	
-	
+	// 변경!!
 	@PostMapping("/giftorder")
 	public ResponseDto<?>giftorder(@RequestBody GiftDto requsetBody, String orderNumber){
 		return giftService.giftorder(requsetBody, orderNumber);
