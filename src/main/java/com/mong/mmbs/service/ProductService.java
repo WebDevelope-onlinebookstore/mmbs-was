@@ -19,12 +19,19 @@ public class ProductService {
 	public ResponseDto<?> getProductAgeList(String productAgeCategory, String productSubAgeCategory) {
 		
 		List<ProductEntity> productAgeList = null;
-		
+	
 		if(productSubAgeCategory.equals("0"))
+			try {
 			productAgeList = productRepository.findByProductAge(productAgeCategory);
+			} catch (Exception exception) {
+				return ResponseDto.setFailed("error");
+			}
 		else 
+			try {
 			productAgeList = productRepository.findByProductAgeAndProductSubAge(productAgeCategory, productSubAgeCategory);
-
+			}catch (Exception exception) {
+				return ResponseDto.setFailed("error");
+			}
 		return ResponseDto.setSuccess("Success", productAgeList);
 	}
 		
@@ -36,9 +43,17 @@ public class ProductService {
 		List<ProductEntity> productGenreList = null; 
 		
 		if(productSubGenreCategory.equals("0"))
+			try {
 			productGenreList = productRepository.findByProductGenre(productGenreCategory);
+			}catch (Exception exception) {
+				return ResponseDto.setFailed("error");
+			}
 		else 
+			try {
 			productGenreList = productRepository.findByProductGenreAndProductSubGenre(productGenreCategory, productSubGenreCategory);
+			}catch (Exception exception) {
+				return ResponseDto.setFailed("error");
+			}
 
 			return ResponseDto.setSuccess("Success", productGenreList);
 	}
