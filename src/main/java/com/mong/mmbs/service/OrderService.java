@@ -30,7 +30,13 @@ public class OrderService {
     } catch (Exception exception) {
       return ResponseDto.setFailed("DataBase Error");
     }
-    
+
+    String guestPassword  = dto.getOrderGuestPassword();
+    String guestPasswordCheck = dto.getOrderGuestPasswordCheck();
+
+    if (!guestPassword.equals(guestPasswordCheck))
+      return ResponseDto.setFailed("GuestPassword Does not match");
+
     OrderEntity order = new OrderEntity(dto, product);
     System.out.println(order.toString());
 
@@ -39,16 +45,6 @@ public class OrderService {
     } catch (Exception exception) {
       return ResponseDto.setFailed("DataBase Error");
     }
-
-    int a = 0;
-    if (a == 1) {
-
-    } else 
-    if (a == 2) {
-
-      } else {
-
-      }
 
     OrderDetailEntity orderDetail = new OrderDetailEntity(dto, order, product);
     try {
