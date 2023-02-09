@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.FindIdDto;
 import com.mong.mmbs.dto.FindPasswordDto;
+import com.mong.mmbs.dto.ResetPasswordDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
@@ -44,18 +45,35 @@ public class AuthService {
     
     public ResponseDto<?> findPassword(FindPasswordDto dto){
     	String userId = dto.getUserId();
-//    	String userName = dto.getUserName();
-//    	String userEmail = dto.getUserEmail();
+    	String userName = dto.getUserName();
+    	String userEmail = dto.getUserEmail();
     	
-    	UserEntity userEntity = findPasswordByUserId(userId);
-    	if(userEntity == null) return ResponseDto.setFailed("일치하는 정보가 없음");
-    	return ResponseDto.setSuccess("성공", userEntity.getUserPassword());
+    	UserEntity userEntity = userRepository.findByUserIdAndUserNameAndUserEmail(userId, userName, userEmail);
+    	if(userEntity == null) return ResponseDto.setFailed(" ㅋㅋ일치하는 정보가 없음");
+    	return ResponseDto.setSuccess("성공",null);
     }
-
-    public UserEntity findPasswordByUserId(String userId) {
-    	Optional<UserEntity> userInfo = userRepository.findById(userId);
-    	return userInfo.get();
+    
+    public ResponseDto<?> resetPassword(ResetPasswordDto dto){
+    	String userId = dto.getUserId();
+    	String password = dto.getUserPassword();
+    	String password2 = dto.getUserPassword2();
+    	
+    	if(!password.equals(password2)) {
+    		return ResponseDto.setFailed("Password Does Not matched!");
+    	}
+    		
+    	UserEntity userEntity = userRepository.findByUserId(userId);
+    	
+    	String encodedPassword = passwordEncoder.encode(password);
+    	userEntity.setUserPassword(encodedPassword);
+    	userRepository.save(userEntity);
+    	return ResponseDto.setSuccess("성공", null);
     }
+    
+//    public UserEntity findPasswordByUserId(String userId) {
+//    	Optional<UserEntity> userInfo = userRepository.findById(userId);
+//    	return userInfo.get();
+//    }
 
     public ResponseDto<?> signUp(SignUpDto dto) {
 
