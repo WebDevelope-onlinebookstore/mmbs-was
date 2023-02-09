@@ -21,12 +21,9 @@ public class DtlpageController {
 	public ResponseDto<?>dtlPage(@PathVariable("productSeq")int productSeq){
 	return dtlpageService.dtlPage(productSeq);
 	}
-	
-	
 	@PostMapping("/dtlLikePage")
 	public ResponseDto<?>dtllikePage(@RequestBody DtlLikepageDto requestbody){
 		ResponseDto<?> LikePage = dtlpageService.dtllikePage(requestbody);
 		return LikePage;
 	}
-
 }

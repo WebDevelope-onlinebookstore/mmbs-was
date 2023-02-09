@@ -1,6 +1,6 @@
 package com.mong.mmbs.service;
 
-import org.apache.logging.log4j.util.StringBuilders;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +18,30 @@ public class GiftService {
 	@Autowired GiftRepository giftRepository;
 	@Autowired OrderRepository orderRepository;
 	public ResponseDto<?>gift(){
-		List<GiftEntity> result =giftRepository.findAll();
+		List<GiftEntity> result = null;
+		try {
+			result=giftRepository.findAll();
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
 		return ResponseDto.setSuccess("성공", result);
 	}
-	
 	public ResponseDto<?>giftorder(GiftDto dto, String orderNumber){
 		int GiftCode = dto.getOrderGiftCode();
 
-		OrderEntity orderEntity = orderRepository.findByOrderNumber(orderNumber);
+		OrderEntity orderEntity = null;
+		try {
+			orderEntity = orderRepository.findByOrderNumber(orderNumber);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
 		orderEntity.setOrderGiftCode(GiftCode);
 
-		orderRepository.save(orderEntity);
-				
+		try {
+			orderRepository.save(orderEntity);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
 		return ResponseDto.setSuccess("성공", orderEntity);
-				
 	}
 }
