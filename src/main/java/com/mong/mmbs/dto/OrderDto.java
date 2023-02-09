@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class OrderDto {
 	private boolean orderUserWhether;
 	private String orderGuestPassword;
+	private String orderGuestPasswordCheck;
 	private String orderUserId;
 	private int orderGiftCode;
 	@NotBlank

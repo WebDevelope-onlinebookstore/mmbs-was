@@ -51,7 +51,7 @@ public class AuthService {
     	if(userEntity == null) return ResponseDto.setFailed("일치하는 정보가 없음");
     	return ResponseDto.setSuccess("성공", userEntity.getUserPassword());
     }
-    
+
     public UserEntity findPasswordByUserId(String userId) {
     	Optional<UserEntity> userInfo = userRepository.findById(userId);
     	return userInfo.get();
