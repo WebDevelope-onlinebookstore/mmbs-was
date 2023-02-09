@@ -47,13 +47,4 @@ public class CartEntity {
 		this.cartProductPrice = productEntity.getProductPrice();
 		this.cartProductAmount = cartProductAmount;
 	}
-//	public CartEntity AmountUpdate(PutInCartDto dto) {
-//		this.cartProductAmount = dto.getCartProductAmount();
-//		return CartEntity.builder().cartProductAmount(cartProductAmount).build();
-//	}
-//	public CartEntity AmountUpdate(AmountUpdateDto dto) {
-//		return CartEntity.builder().cartProductAmount(getCartProductAmount()).build();
-//	}
-	
-	
 }

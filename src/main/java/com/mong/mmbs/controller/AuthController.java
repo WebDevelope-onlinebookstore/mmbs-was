@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mong.mmbs.dto.FindIdDto;
 import com.mong.mmbs.dto.FindPasswordDto;
+import com.mong.mmbs.dto.ResetPasswordDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.SignInDto;
 import com.mong.mmbs.dto.SignInResponseDto;
@@ -38,7 +39,11 @@ public class AuthController {
 		ResponseDto<?> result = authService.findPassword(requestBody);
 		return result;
 	}
-	
+	@PostMapping("/resetPassword")
+	public ResponseDto<?> resetPassword(@RequestBody ResetPasswordDto requestBody){
+		ResponseDto<?> result = authService.resetPassword(requestBody);
+		return result;
+	}
 	@PostMapping("/signIn")
 	public ResponseDto<SignInResponseDto> signIn(@RequestBody SignInDto requestBody) {
 		ResponseDto<SignInResponseDto> result = authService.signIn(requestBody);

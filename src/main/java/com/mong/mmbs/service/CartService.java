@@ -60,7 +60,6 @@ public class CartService {
 		}
 		if (cartEntity == null) {
 
-			// productEntity에 값들이 많은데 cartEntity안에 뭘넣는건지? 필드명들이 다 다른데
 			cartEntity = new CartEntity(cartUserId, cartProductAmount, productEntity);
 
 			try {
@@ -78,7 +77,7 @@ public class CartService {
 			}
 
 		}
-		// 얘역활을 모르겠음
+		
 		List<CartEntity> cartList = new ArrayList<CartEntity>();
 		try {
 			cartList = cartRepository.findByCartUserId(cartUserId);
@@ -87,18 +86,6 @@ public class CartService {
 		}
 
 		return ResponseDto.setSuccess("성공", cartList);
-
-		// System.out.println(dto.toString());
-		// CartEntity cartEntity =
-		// cartRepository.findByCartUserIdAndCartProductId(cartUserId, cartProductId);
-		// if (cartEntity == null) {
-		// cartEntity = new CartEntity(dto);
-		// cartRepository.save(cartEntity);
-		// return ResponseDto.setSuccess("장바구니에 담겼습니다.", null);
-		// } else
-		// return ResponseDto.setFailed("장바구니에 이미 담겨 있습니다.");
-		// {cartEntity = cartEntity.AmountUpdate(dto);
-		// cartRepository.save(cartEntity);
 	}
 
 	public ResponseDto<?> deleteFromCart(String userId, DeleteFromCartDto dto) {
@@ -126,7 +113,6 @@ public class CartService {
 
 	public ResponseDto<?> amountUpdate(AmountUpdateDto dto) {
 		List<CartEntity>cartEntity = dto.getSelectCartList();
-//		cartEntity.setCartProductAmount(cartProductAmount);
 		cartRepository.saveAll(cartEntity);
 		return ResponseDto.setSuccess("장바구니에서 수정됬었습니다 .", cartEntity);
 	}
@@ -156,19 +142,5 @@ public class CartService {
 		return ResponseDto.setSuccess("장바구니에 담긴 책의 총수량", total);
 	}
 
-//	public ResponseDto<?> cartTotalPrice(DeleteFromCartDto dto) {
-//
-//		String cartUserId = dto.getCartUserId();
-//		int cartProductId = dto.getCartProductId();
-//
-//		List<CartEntity> cartEntity = cartRepository.findByCartUserId(cartUserId);
-//		int price = 0;
-//		if (cartEntity != null) {
-//			for (CartEntity cartEntity2 : cartEntity) {
-//				price = cartEntity2.getCartProductPrice() * cartEntity2.getCartProductAmount();
-//			}
-//
-//		}
-//		return ResponseDto.setSuccess("장바구니에 담긴 책의 총 가격", null);
-//	}
+
 }
