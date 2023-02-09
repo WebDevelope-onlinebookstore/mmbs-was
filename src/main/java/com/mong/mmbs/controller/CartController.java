@@ -46,7 +46,7 @@ public class CartController {
 		ResponseDto<?> result = cartService.deleteAllFromCart(requestBody);
 		return result;
 	}
-	@PostMapping("/cartAllAmount")//장바구니 화면에서 전체 지우는거
+	@PostMapping("/cartAllAmount")//장바구니 화면에서 수량 합산
 	public ResponseDto<?> cartAllAmount(@RequestBody DeleteAllFromCartDto requestBody){
 		ResponseDto<?> result = cartService.cartAllAmount(requestBody);
 		return result;
