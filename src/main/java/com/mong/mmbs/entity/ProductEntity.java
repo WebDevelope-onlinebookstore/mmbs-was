@@ -51,4 +51,5 @@ public class ProductEntity {
 	private String productImageUrl;
 //	판매량
 	private int productSalesCount;
+
 }
