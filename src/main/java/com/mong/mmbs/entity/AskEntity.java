@@ -59,8 +59,8 @@ public class AskEntity {
 		}
 
 		public void setAskUpdate(AskUpdateDto dto) {
-			this.askSort =dto.getAskSort();
-			this.askTitle =dto.getAskTitle();
+			this.askSort = dto.getAskSort();
+			this.askTitle = dto.getAskTitle();
 			this.askContent = dto.getAskContent();
 		}
 }
