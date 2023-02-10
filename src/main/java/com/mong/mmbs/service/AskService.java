@@ -68,8 +68,12 @@ public class AskService {
 		} catch (Exception exception) {
 			ResponseDto.setFailed("Failed");
 		}
-		ask.setAskUpdate(dto);
 
+		System.out.println("================================");
+		System.out.println(ask.toString());
+		ask.setAskUpdate(dto);
+		System.out.println("================================");
+		System.out.println(ask.toString());
 		try {
 			askRepository.save(ask);
 		} catch (Exception exception) {
