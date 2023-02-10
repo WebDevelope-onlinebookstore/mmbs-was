@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AskDto {
+public class AskUpdateDto {
   @NotBlank
-	private String askWriter;
+  private int askId;
+  @NotBlank
+  private String askWriter;
   @NotBlank
   private String askSort;
   @NotBlank
