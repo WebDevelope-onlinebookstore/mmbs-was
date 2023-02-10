@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GiftDto {
 	private int orderGiftCode; 
+	private String orderNumber;
 	// private int
 }
