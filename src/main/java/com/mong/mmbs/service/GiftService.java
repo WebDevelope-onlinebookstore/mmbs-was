@@ -26,12 +26,15 @@ public class GiftService {
 		}
 		return ResponseDto.setSuccess("성공", result);
 	}
-	public ResponseDto<?>giftorder(GiftDto dto, String orderNumber){
+	public ResponseDto<?>giftorder(GiftDto dto){
 		int GiftCode = dto.getOrderGiftCode();
+		String orderNumber = dto.getOrderNumber();
+		// System.out.println(orderNumber);
 
 		OrderEntity orderEntity = null;
 		try {
 			orderEntity = orderRepository.findByOrderNumber(orderNumber);
+			// if (orderEntity == null) return ResponseDto.setFailed("Does not Exist Order");
 		} catch (Exception exception) {
 			return ResponseDto.setFailed("Database Error");
 		}

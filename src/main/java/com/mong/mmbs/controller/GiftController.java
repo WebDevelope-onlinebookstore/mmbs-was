@@ -27,8 +27,8 @@ public class GiftController {
 	
 	// 변경!!
 	@PostMapping("/giftorder")
-	public ResponseDto<?>giftorder(@RequestBody GiftDto requsetBody, String orderNumber){
-		return giftService.giftorder(requsetBody, orderNumber);
+	public ResponseDto<?>giftorder(@RequestBody GiftDto requsetBody){
+		return giftService.giftorder(requsetBody);
 	}
 	
 
