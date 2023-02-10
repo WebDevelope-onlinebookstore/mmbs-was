@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDto;
+import com.mong.mmbs.dto.AskUpdateDto;
 import com.mong.mmbs.repository.AskRepository;
 import com.mong.mmbs.entity.AskEntity;
 
@@ -43,5 +44,38 @@ public class AskService {
 		}
 		return ResponseDto.setSuccess("Ask Write Success", askEntity);
 
+	}
+
+	public ResponseDto<?> askUpdateList(int askId){
+		
+		AskEntity ask = null;
+
+		try {
+			ask = askRepository.findByAskId(askId);
+		} catch (Exception exception) {
+			return ResponseDto.setFailed("Database Error");
+		}
+		return ResponseDto.setSuccess("성공", ask);
+	}
+
+	public ResponseDto<?> askUpdate(AskUpdateDto dto) {
+		AskEntity ask = null;
+		int askId = dto.getAskId();
+
+		try {
+			ask = askRepository.findByAskId(askId);
+			if (ask == null) ResponseDto.setFailed("Does Not Exist User");
+		} catch (Exception exception) {
+			ResponseDto.setFailed("Failed");
+		}
+		ask.setAskUpdate(dto);
+
+		try {
+			askRepository.save(ask);
+		} catch (Exception exception) {
+			ResponseDto.setFailed("Failed");
+		}
+		
+		return ResponseDto.setSuccess("Success", ask);
 	}
 }
