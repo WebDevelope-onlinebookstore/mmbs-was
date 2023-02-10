@@ -23,15 +23,19 @@ public class OrderService {
     } catch (Exception exception) {
       return ResponseDto.setFailed("DataBase Error");
     }
-    // String guestPassword  = dto.getOrderGuestPassword();
-    // String guestPasswordCheck = dto.getOrderGuestPasswordCheck();
-    // if(guestPassword != null){
-    // try {
-    //   if (!guestPassword.equals(guestPasswordCheck))
-    //     return ResponseDto.setFailed("GuestPassword Does not match");
-    // } catch (Exception exception) {
-    //     return ResponseDto.setFailed("Exception Error");
-    // }}
+    
+    String guestPassword  = dto.getOrderGuestPassword();
+    String guestPasswordCheck = dto.getOrderGuestPasswordCheck();
+
+    if (guestPassword != null) {
+    try {
+      if (!guestPassword.equals(guestPasswordCheck))
+        return ResponseDto.setFailed("GuestPassword Does not match");
+    } catch (Exception exception) {
+        return ResponseDto.setFailed("Exception Error");
+    }
+  }
+
     OrderEntity order = new OrderEntity(dto, product);
     System.out.println(order.toString());
     try {

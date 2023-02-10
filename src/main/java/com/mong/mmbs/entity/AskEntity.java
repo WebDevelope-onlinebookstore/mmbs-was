@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.mong.mmbs.dto.AskDto;
+import com.mong.mmbs.dto.AskUpdateDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +35,9 @@ public class AskEntity {
 //  문의 카테고리
 	@NotBlank
 	private String askSort;
+// 	문의 제목
+	@NotBlank
+	private String askTitle;
 //  문의 내용
 	@NotBlank
 	private String askContent;
@@ -49,7 +53,14 @@ public class AskEntity {
 
 			askWriter = dto.getAskWriter();
 			askSort = dto.getAskSort();
+			askTitle = dto.getAskTitle();
 			askContent = dto.getAskContent();
 			askDatetime = dateFormat.format(new Date());
+		}
+
+		public void setAskUpdate(AskUpdateDto dto) {
+			this.askSort =dto.getAskSort();
+			this.askTitle =dto.getAskTitle();
+			this.askContent = dto.getAskContent();
 		}
 }
