@@ -22,10 +22,7 @@ public List<ProductEntity> findTop10ByOrderByProductLikeDesc();
 // 책 검색 기능
 public List<ProductEntity> findByProductTitleContaining(String productTitle);
 
-
-
-
-@Query(value = "SELECT * FROM product order by RAND() limit 6",nativeQuery = true)
-List<ProductEntity> findAll();
-public List<ProductEntity> findByProductSeq(String productSeq);
+// @Query(value = "SELECT * FROM product order by RAND() limit 6",nativeQuery = true)
+// List<ProductEntity> findAll();
+// public List<ProductEntity> findByProductSeq(int productSeq);
 }

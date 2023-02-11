@@ -14,4 +14,6 @@ public interface AskRepository extends JpaRepository<AskEntity, Integer>{
 
   public AskEntity findByAskId(int askId);
 
+  public AskEntity deleteByAskId(int askId);
+
 }

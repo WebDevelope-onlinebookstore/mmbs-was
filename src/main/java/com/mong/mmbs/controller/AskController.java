@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
+import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.service.AskService;
 
 @RestController
@@ -39,6 +40,12 @@ public class AskController {
   @PostMapping("/userAskUpdate/save")
   public ResponseDto<?> askUpdate(@RequestBody AskUpdateDto requestBody) {
     ResponseDto<?> result = askService.askUpdate(requestBody);
+    return result;
+  }
+
+  @PostMapping("/userDelete")
+  public ResponseDto<?> askDelete(@RequestBody AskDeleteDto requestBody){
+    ResponseDto<?> result = askService.askDelete(requestBody);
     return result;
   }
 }

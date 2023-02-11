@@ -37,24 +37,25 @@ public class OrderInquiryService {
 	}
 	
 	// 
-	public ResponseDto<?> getOrderInquiry(String orderNumber, String productSeq) {
+	public ResponseDto<?> getOrderInquiry(String orderNumber, int productSeq) {
 
 		OrderEntity order = null;
+		ProductEntity product = null;
 		// 해당 주문의 상세 데이터 리스트 같이 반환
 		List<OrderDetailEntity> detailList= new ArrayList<OrderDetailEntity>();
 		// 해당 주문의 제품 리스트 같이 반환
-		List<ProductEntity> productList= new ArrayList<ProductEntity>();
+		// List<ProductEntity> productList= new ArrayList<ProductEntity>();
 
 		try {
 			order = orderRepository.findByOrderNumber(orderNumber);
 			detailList = orderDetailRepository.findByOrderNumber(orderNumber);
-			productList = productRepository.findByProductSeq(productSeq);
+			product = productRepository.findByProductSeq(productSeq);
 		} catch (Exception exception) {
+			exception.printStackTrace();
 			return ResponseDto.setFailed("Database Error");
 		}
-		GetOrderInquiryResponseDto getOrderInquiryResponseDto = new GetOrderInquiryResponseDto(order, detailList, productList);
+		GetOrderInquiryResponseDto getOrderInquiryResponseDto = new GetOrderInquiryResponseDto(order, detailList, product);
 		return ResponseDto.setSuccess("Suceess" , getOrderInquiryResponseDto);
 	}
-
 
 }
