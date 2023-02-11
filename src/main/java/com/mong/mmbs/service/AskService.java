@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
 import com.mong.mmbs.repository.AskRepository;
@@ -81,5 +82,12 @@ public class AskService {
 		}
 		
 		return ResponseDto.setSuccess("Success", ask);
+	
+	}
+	public ResponseDto<?> askDelete (AskDeleteDto dto){
+		int askId =dto.getAskId();
+		AskEntity askEntity = askRepository.findByAskId(askId);
+		askRepository.delete(askEntity);
+		return ResponseDto.setSuccess("Success", null);
 	}
 }
