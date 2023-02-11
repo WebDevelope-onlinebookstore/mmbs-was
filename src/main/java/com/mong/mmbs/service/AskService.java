@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
+import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.repository.AskRepository;
 import com.mong.mmbs.entity.AskEntity;
 
@@ -69,11 +70,8 @@ public class AskService {
 			ResponseDto.setFailed("Failed");
 		}
 
-		System.out.println("================================");
-		System.out.println(ask.toString());
 		ask.setAskUpdate(dto);
-		System.out.println("================================");
-		System.out.println(ask.toString());
+
 		try {
 			askRepository.save(ask);
 		} catch (Exception exception) {
@@ -81,5 +79,17 @@ public class AskService {
 		}
 		
 		return ResponseDto.setSuccess("Success", ask);
+	}
+
+	public ResponseDto<?> askDelete (AskDeleteDto dto){
+		
+		int askId =dto.getAskId();
+		try {
+			AskEntity askEntity = askRepository.findByAskId(askId);
+			askRepository.delete(askEntity);
+		} catch (Exception exception) {
+			ResponseDto.setFailed("Failed");
+		}
+		return ResponseDto.setSuccess("Success", askId);
 	}
 }
