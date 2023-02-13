@@ -12,6 +12,7 @@ import com.mong.mmbs.entity.AskEntity;
 public interface AskRepository extends JpaRepository<AskEntity, Integer>{
 
   public List<AskEntity> findByAskWriter(String UserId);
+  // public List<AskEntity> findByAskId(int askId);
 
   public AskEntity findByAskId(int askId);
 
