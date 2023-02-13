@@ -10,6 +10,7 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
+import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.repository.AskRepository;
 import com.mong.mmbs.entity.AskEntity;
 
@@ -70,11 +71,8 @@ public class AskService {
 			ResponseDto.setFailed("Failed");
 		}
 
-		System.out.println("================================");
-		System.out.println(ask.toString());
 		ask.setAskUpdate(dto);
-		System.out.println("================================");
-		System.out.println(ask.toString());
+
 		try {
 			askRepository.save(ask);
 		} catch (Exception exception) {
@@ -84,10 +82,24 @@ public class AskService {
 		return ResponseDto.setSuccess("Success", ask);
 	
 	}
-	public ResponseDto<?> askDelete (AskDeleteDto dto){
+	public ResponseDto<?> askDelete (AskDeleteDto dto, String userId){
+		
 		int askId =dto.getAskId();
-		AskEntity askEntity = askRepository.findByAskId(askId);
-		askRepository.delete(askEntity);
-		return ResponseDto.setSuccess("Success", null);
+		try {
+			AskEntity askEntity = askRepository.findByAskId(askId);
+			askRepository.delete(askEntity);
+		} catch (Exception exception) {
+
+			ResponseDto.setFailed("Failed");
+		}
+		
+		List<AskEntity> list = new ArrayList<AskEntity>();
+		try {
+			list =askRepository.findByAskWriter(userId);
+		} catch (Exception exception) {
+			ResponseDto.setFailed("Failed123");
+
+		}
+		return ResponseDto.setSuccess("Success", list);
 	}
 }

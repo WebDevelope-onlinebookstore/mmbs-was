@@ -16,5 +16,5 @@ import lombok.NoArgsConstructor;
 public class GetOrderInquiryResponseDto {
   private OrderEntity order;
   private List<OrderDetailEntity> detailList;
-  private List<ProductEntity> productList;
+  private ProductEntity product;
 }

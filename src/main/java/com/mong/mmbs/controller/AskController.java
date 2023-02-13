@@ -13,6 +13,7 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
+import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.service.AskService;
 
 @RestController
@@ -44,8 +45,8 @@ public class AskController {
   }
 
   @PostMapping("/userDelete")
-  public ResponseDto<?> askDelete(@RequestBody AskDeleteDto requestBody){
-    ResponseDto<?> result = askService.askDelete(requestBody);
+  public ResponseDto<?> askDelete(@RequestBody AskDeleteDto requestBody,@AuthenticationPrincipal String userId){
+    ResponseDto<?> result = askService.askDelete(requestBody,userId);
     return result;
   }
 }
