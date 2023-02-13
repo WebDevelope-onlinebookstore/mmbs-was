@@ -36,16 +36,14 @@ public class OrderInquiryService {
 		return ResponseDto.setSuccess("Success", orderList);
 	}
 	
-	// 
 	public ResponseDto<?> getOrderInquiry(String orderNumber, int productSeq) {
 
 		OrderEntity order = null;
+		// 해당 주문의 제품 리스트 같이 반환
 		ProductEntity product = null;
 		// 해당 주문의 상세 데이터 리스트 같이 반환
 		List<OrderDetailEntity> detailList= new ArrayList<OrderDetailEntity>();
-		// 해당 주문의 제품 리스트 같이 반환
-		// List<ProductEntity> productList= new ArrayList<ProductEntity>();
-
+		
 		try {
 			order = orderRepository.findByOrderNumber(orderNumber);
 			detailList = orderDetailRepository.findByOrderNumber(orderNumber);
