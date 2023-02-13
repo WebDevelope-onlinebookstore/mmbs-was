@@ -21,7 +21,8 @@ public class WebSecurityConfig {
 	//// 자바 빈으로 설정 이 공간에서만 사용..?
 	@Bean
 	protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-		//// >> 매개변수를 httpSecurity로 받는다. //// http통신에서 보안과 관련된 객체
+//	httpSecurity.csrf().disable();
+		// >> 매개변수를 httpSecurity로 받는다. //// http통신에서 보안과 관련된 객체
 		
 		httpSecurity //// 설정 맞추기
 			// cors 정책 (현재는 Application에서 작업을 해두었으므로 기본 설정 사용)
@@ -40,11 +41,11 @@ public class WebSecurityConfig {
 			.anyRequest().authenticated();
 		
 		httpSecurity.addFilterBefore(jwtAuthencationFilter, UsernamePasswordAuthenticationFilter.class);
-		//// 인증과 관련된 httpSecurity 객체에 여러가지 필터 중에서 >>
-		//// >> UsernamePasswordAuthenticationFilter.class 필터 이전에 jwtAuthencationFilter을 붙일 것이다.
+		// 인증과 관련된 httpSecurity 객체에 여러가지 필터 중에서 >>
+		// >> UsernamePasswordAuthenticationFilter.class 필터 이전에 jwtAuthencationFilter을 붙일 것이다.
 		
 		return httpSecurity.build();
-		//// 수정한 것을 적용 시키는 단계
+		// 수정한 것을 적용 시키는 단계
 	}
 }
 
