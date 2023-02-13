@@ -14,6 +14,7 @@ import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
 import com.mong.mmbs.dto.AskDeleteDto;
+import com.mong.mmbs.dto.AskSearchDto;
 import com.mong.mmbs.service.AskService;
 
 @RestController
@@ -49,4 +50,10 @@ public class AskController {
     ResponseDto<?> result = askService.askDelete(requestBody,userId);
     return result;
   }
+
+  @PostMapping("/askSearch")
+    public ResponseDto<?> askSearch(@RequestBody AskSearchDto requsetBody, @AuthenticationPrincipal String userId) {
+        ResponseDto<?> result = askService.askSearch(requsetBody, userId);
+        return result;
+    }
 }

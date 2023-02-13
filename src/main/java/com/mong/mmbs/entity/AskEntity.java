@@ -44,7 +44,7 @@ public class AskEntity {
 //  문의 날짜
 	private String askDatetime;
 //  문의 상태 [-1: 삭제, 0: 문의 접수, 1: 답변완료 상태]
-	private int askStatus;
+	private String askStatus;
 //  문의 답변
     private String askReply;
 
@@ -56,6 +56,7 @@ public class AskEntity {
 			askTitle = dto.getAskTitle();
 			askContent = dto.getAskContent();
 			askDatetime = dateFormat.format(new Date());
+			askStatus = "문의 접수";
 		}
 
 		public void setAskUpdate(AskUpdateDto dto) {
