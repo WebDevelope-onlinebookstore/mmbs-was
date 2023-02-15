@@ -13,7 +13,6 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
-import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskSearchDto;
 import com.mong.mmbs.service.AskService;
 

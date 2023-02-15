@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GiftDto {
-	private int orderGiftCode; 
-	private String orderNumber;
+public class UserDeleteDto {
+  
+  private String userId;
+  private String userEmail;
 }

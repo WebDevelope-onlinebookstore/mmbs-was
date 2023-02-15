@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,11 +32,9 @@ public class CartEntity {
 	private String cartProductImage;
 //  제품 개당 가격
 	private int cartProductPrice;
-//  제품 개 수
+//  제품 개수
 	private int cartProductAmount;
 	
-
-	// 이렇게쓰는이유??
 	public CartEntity(String cartUserId,int cartProductAmount, ProductEntity productEntity) {
 		this.cartUserId = cartUserId;
 		this.cartProductId = productEntity.getProductSeq();

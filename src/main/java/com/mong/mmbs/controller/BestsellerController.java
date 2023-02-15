@@ -10,8 +10,6 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.repository.ProductRepository;
 import com.mong.mmbs.service.BestsellerService;
 
-
-
 @RequestMapping("/api")
 @RestController
 public class  BestsellerController{
@@ -27,6 +25,5 @@ public class  BestsellerController{
     public ResponseDto<?>MainImage(){
         return bestsellerService.MainImage();
     }
-    
 
 }

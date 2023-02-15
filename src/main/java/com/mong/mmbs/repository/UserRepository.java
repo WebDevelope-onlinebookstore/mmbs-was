@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.mong.mmbs.entity.UserEntity;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String>{
 	
@@ -24,4 +23,9 @@ public interface UserRepository extends JpaRepository<UserEntity, String>{
 	public UserEntity findByUserId(String UserId);
 
 	public UserEntity findPasswordByUserId(String UserId);
+
+	public boolean existsByUserIdAndUserEmail(String userId, String userEmail);
+
+	public UserEntity deleteByUserId(String UserId);
+
 }

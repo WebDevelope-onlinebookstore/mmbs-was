@@ -18,7 +18,6 @@ public List<ProductEntity> findByProductGenreAndProductSubGenre(String productGe
 // ORDER BY 정렬 
 public List<ProductEntity> findTop10ByOrderByProductLikeDesc();
 
-
 // 책 검색 기능
 public List<ProductEntity> findByProductTitleContaining(String productTitle);
 

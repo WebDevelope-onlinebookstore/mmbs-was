@@ -26,7 +26,7 @@ public class Board {
     public Board(Long ask_id, String ask_writer, String ask_sort,
     		String ask_content, String ask_datetime, int ask_status, 
     		String ask_reply ) {
-    	
+
         this.ask_id = ask_id;
         this.ask_writer = ask_writer;
         this.ask_sort = ask_sort;
