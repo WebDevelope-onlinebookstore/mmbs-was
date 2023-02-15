@@ -28,6 +28,10 @@ public class OrderDetailEntity {
 	private int productId;
 //	개당 금액
 	private int productPrice;
+//	제품 이름
+  private String productTitle;
+//	제품 이미지
+  private String productImageUrl;
 //	갯수
 	private int productCount;
 
@@ -36,5 +40,7 @@ public class OrderDetailEntity {
 		this.productCount = dto.getOrderCount();
 		this.orderNumber = order.getOrderNumber();
 		this.productPrice = product.getProductPrice();
+		this.productTitle = product.getProductTitle();
+		this.productImageUrl = product.getProductImageUrl();
 	}
 }

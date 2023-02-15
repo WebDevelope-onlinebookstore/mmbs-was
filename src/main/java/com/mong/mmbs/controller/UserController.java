@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.UserUpdateDto;
+import com.mong.mmbs.dto.UserDeleteDto;
+
 import com.mong.mmbs.service.UserService;
 
 @RestController
@@ -27,5 +29,10 @@ public class UserController {
 	public ResponseDto<?> userUpdate(@RequestBody UserUpdateDto dto) {
 		return userService.userUpdate(dto);
 	}
+
+	@PostMapping("/userDelete")
+	public ResponseDto<?> userDelete(@AuthenticationPrincipal String userId, @RequestBody UserDeleteDto dto) {
+		return userService.userDelete(userId, dto);
+	} 
 
 }
