@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import com.mong.mmbs.entity.Board;
 import com.mong.mmbs.repository.BoardRepository;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
 public class BoardService {
 
