@@ -3,7 +3,6 @@ package com.mong.mmbs.dto;
 import java.util.List;
 
 import com.mong.mmbs.entity.OrderEntity;
-import com.mong.mmbs.entity.ProductEntity;
 import com.mong.mmbs.entity.OrderDetailEntity;
 
 import lombok.AllArgsConstructor;

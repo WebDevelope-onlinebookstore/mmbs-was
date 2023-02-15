@@ -15,17 +15,13 @@ import com.mong.mmbs.service.GiftService;
 @RestController
 public class GiftController {
 	@Autowired GiftService giftService;
-	// 사은품 get
+	// 사은품 불러오기
 	@GetMapping("/gift")
 	public ResponseDto<?>gift(){
-		
 		return giftService.gift();
 	}
 	
-	
-	
-	
-	// 변경!!
+	// 사은품 변경
 	@PostMapping("/giftorder")
 	public ResponseDto<?>giftorder(@RequestBody GiftDto requsetBody){
 		return giftService.giftorder(requsetBody);

@@ -26,10 +26,7 @@ public class DtlpageService {
 		}
 		return ResponseDto.setSuccess("성공", product);
 	}
-	
-	
-	
-	
+
 //	상세페이지 좋아요
 	public ResponseDto<?>dtllikePage(DtlLikepageDto dto ) {
 		int productSeq = dto.getProductSeq();
@@ -49,6 +46,5 @@ public class DtlpageService {
 		return ResponseDto.setSuccess("성공", null);
 		
 	}
-
 	
 }

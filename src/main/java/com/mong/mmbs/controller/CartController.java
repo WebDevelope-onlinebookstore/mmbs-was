@@ -18,10 +18,11 @@ import com.mong.mmbs.service.CartService;
 @RequestMapping("/api/cart")
 public class CartController {
 
-	@Autowired CartService cartService;
+	@Autowired
+	CartService cartService;
 	@PostMapping("/cartInsert")//상세 페이지에서 장바구니로 담는거
 	public ResponseDto<?> putInCart(@RequestBody PutInCartDto requestBody){
-		 System.out.println(requestBody.toString());
+		System.out.println(requestBody.toString());
 		ResponseDto<?> result = cartService.putInCart(requestBody);
 		return result;
 	}

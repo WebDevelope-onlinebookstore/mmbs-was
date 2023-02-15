@@ -34,7 +34,7 @@ public class TokenProvider {
 	public String validate (String token) {
 		// 매개변수로 받은 token을 키로 사용해서 복호화 (디코딩)
 		Claims claims = Jwts.parser().setSigningKey(SECURITY_KEY).parseClaimsJws(token).getBody();
-		// 복호화된 토크느이 payload에서 제목을 가져옴.
+		// 복호화된 토큰이 payload에서 제목을 가져옴.
 		System.out.println(token);
 		return claims.getSubject();
 	}

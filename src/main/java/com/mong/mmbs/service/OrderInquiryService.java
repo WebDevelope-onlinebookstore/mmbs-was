@@ -6,12 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mong.mmbs.dto.GetOrderInquiryResponseDto;
 import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.OrderListResponseDto;
 import com.mong.mmbs.entity.OrderDetailEntity;
 import com.mong.mmbs.entity.OrderEntity;
-import com.mong.mmbs.entity.ProductEntity;
 import com.mong.mmbs.repository.OrderDetailRepository;
 import com.mong.mmbs.repository.OrderRepository;
 import com.mong.mmbs.repository.ProductRepository;
@@ -41,24 +39,6 @@ public class OrderInquiryService {
 		}
 		return ResponseDto.setSuccess("Success", result);
 	}
-	
-	// public ResponseDto<?> getOrderInquiry(String orderNumber) {
-
-	// 	OrderEntity order = null;
-
-	// 	// 해당 주문의 상세 데이터 리스트 같이 반환
-	// 	List<OrderDetailEntity> detailList= new ArrayList<OrderDetailEntity>();
-		
-	// 	try {
-	// 		order = orderRepository.findByOrderNumber(orderNumber);
-	// 		detailList = orderDetailRepository.findByOrderNumber(orderNumber);
-	// 	} catch (Exception exception) {
-	// 		exception.printStackTrace();
-	// 		return ResponseDto.setFailed("Database Error");
-	// 	}
-	// 	GetOrderInquiryResponseDto getOrderInquiryResponseDto = new GetOrderInquiryResponseDto(order, detailList);
-	// 	return ResponseDto.setSuccess("Suceess" , getOrderInquiryResponseDto);
-	// }
 
 }
 

@@ -27,7 +27,6 @@ public class AuthService {
     RecommendRepository recommendRepository;
     @Autowired
     TokenProvider tokenProvider;
-  
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     
@@ -35,7 +34,7 @@ public class AuthService {
     public ResponseDto<?> findId(FindIdDto dto) {
     	String userName = dto.getUserName();
     	String userEmail = dto.getUserEmail();
-    	
+
     	UserEntity userEntity = userRepository.findByUserEmailAndUserName(userEmail, userName);
     	if (userEntity == null) return ResponseDto.setFailed("일치하는 정보가 없음"); 
     	return ResponseDto.setSuccess("성공", userEntity.getUserId());
@@ -67,11 +66,6 @@ public class AuthService {
     	userRepository.save(userEntity);
     	return ResponseDto.setSuccess("성공", null);
     }
-    
-//    public UserEntity findPasswordByUserId(String userId) {
-//    	Optional<UserEntity> userInfo = userRepository.findById(userId);
-//    	return userInfo.get();
-//    }
 
     public ResponseDto<?> signUp(SignUpDto dto) {
 
@@ -111,15 +105,11 @@ public class AuthService {
             // description: Repository에 Entity 저장 //
             System.out.println(recommendEntity.toString());
             recommendRepository.save(recommendEntity);
-
-            // todo: 추천 당한 사람에게 쿠폰 지급 //
-            
         }
         
         // 비밀번호 암호화
         String encodedPassword = passwordEncoder.encode(userPassword);
         dto.setUserPassword(encodedPassword);
-//        UserEntity.setUserPassword(passwordEncoder.encode(userPassword));
 
         // description: Entity 생성 //
         UserEntity userEntity = new UserEntity(dto);

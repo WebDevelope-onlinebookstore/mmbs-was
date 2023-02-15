@@ -35,5 +35,4 @@ public class BestsellerService {
         return ResponseDto.setSuccess("성공", BastImage);
     }
 
-
 }

@@ -1,6 +1,5 @@
 package com.mong.mmbs.service;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -15,7 +14,6 @@ import com.mong.mmbs.dto.ResponseDto;
 import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskDto;
 import com.mong.mmbs.dto.AskUpdateDto;
-import com.mong.mmbs.dto.AskDeleteDto;
 import com.mong.mmbs.dto.AskSearchDto;
 import com.mong.mmbs.repository.AskRepository;
 import com.mong.mmbs.entity.AskEntity;
@@ -26,8 +24,6 @@ public class AskService {
   @Autowired AskRepository askRepository;
 
   // 로그인 된 회원의 아이디를 askWriter에 입력
-  // 문의 유형는 제품 문의, 주문/결제 문의, 취소/환불 문의 3가지
-  // 문의 상태는 [-1: 삭제, 0: 문의 접수, 1: 답변완료 상태]
   public ResponseDto<?> getAskList(String userId) {
 
 		List<AskEntity> askList = new ArrayList<AskEntity>();
@@ -84,9 +80,7 @@ public class AskService {
 		} catch (Exception exception) {
 			ResponseDto.setFailed("Failed");
 		}
-		
 		return ResponseDto.setSuccess("Success", ask);
-	
 	}
 	
 	public ResponseDto<?> askDelete (AskDeleteDto dto, String userId){

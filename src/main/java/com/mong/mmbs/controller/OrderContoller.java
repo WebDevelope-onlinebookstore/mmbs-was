@@ -23,6 +23,5 @@ public class OrderContoller {
     ResponseDto<?> result = orderService.orderInsert(requestBody);
     return result;
   }
-    
   
 }
