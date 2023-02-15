@@ -88,6 +88,7 @@ public class AskService {
 		return ResponseDto.setSuccess("Success", ask);
 	
 	}
+	
 	public ResponseDto<?> askDelete (AskDeleteDto dto, String userId){
 		
 		int askId =dto.getAskId();
@@ -101,7 +102,7 @@ public class AskService {
 		
 		List<AskEntity> list = new ArrayList<AskEntity>();
 		try {
-			list =askRepository.findByAskWriter(userId);
+			list = askRepository.findByAskWriter(userId);
 		} catch (Exception exception) {
 			ResponseDto.setFailed("Failed123");
 

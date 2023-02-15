@@ -11,9 +11,11 @@ import com.mong.mmbs.entity.ProductEntity;
 import com.mong.mmbs.entity.OrderDetailEntity;
 @Service
 public class OrderService {
+
   @Autowired OrderRepository orderRepository;
   @Autowired OrderDetailRepository orderDetailRepository;
   @Autowired ProductRepository productRepository;
+  
   public ResponseDto<?> orderInsert(OrderDto dto){
     int productId  = dto.getProductId();
     ProductEntity product = null;

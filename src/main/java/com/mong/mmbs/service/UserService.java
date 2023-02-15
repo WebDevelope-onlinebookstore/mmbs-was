@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mong.mmbs.dto.ResponseDto;
+import com.mong.mmbs.dto.UserDeleteDto;
 import com.mong.mmbs.dto.UserUpdateDto;
 import com.mong.mmbs.entity.UserEntity;
 import com.mong.mmbs.repository.UserRepository;
@@ -47,14 +48,24 @@ public class UserService {
 		
 		return ResponseDto.setSuccess("Sucess", user);
 	}
+
+	public ResponseDto<?> userDelete (String userId, UserDeleteDto dto) {
+		
+		userId = dto.getUserId();
+		String userEmail = dto.getUserEmail();
+
+		UserEntity userEntity = null; 
+
+		try {
+			if(!userRepository.existsByUserIdAndUserEmail(userId, userEmail))
+				return ResponseDto.setFailed("UserId Or UserEmail Does Not Exist");
+				
+			userEntity = userRepository.findByUserId(userId);
+			userRepository.delete(userEntity);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return ResponseDto.setFailed("Failed");
+		}
+		return ResponseDto.setSuccess("Success", null);
+	}
 }
-//public ResponseDto<UserUpdateResponseDto> userUpdate(UserUpdateDto dto) {
-//return null;
-////회원 정보 수정 (userId, userEmail는 변경 불가)
-////로그인 된 회원만 접근 가능
-////로그인 된 'userId'로 회원 정보 불러오기
-////비밀번호는 가져오지 않는다.
-////비밀번호 양식이 맞는지 검증
-////비밀번호 변경 시 확인란과 서로 같은지 검증
-////수정된 회원 정보 저장 및 출력
-//}
